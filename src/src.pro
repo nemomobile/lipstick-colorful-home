@@ -31,4 +31,5 @@ OTHER_FILES += \
     qml/MainScreen.qml \
     qml/pages/AppSwitcher/CloseButton.qml \
     qml/pages/AppLauncher/LauncherItem.qml \
-    qml/pages/Search.qml
+    qml/pages/Search.qml \
+    qml/pages/Cloud.qml

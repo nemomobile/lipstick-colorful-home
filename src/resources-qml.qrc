@@ -9,5 +9,6 @@
         <file>qml/pages/AppSwitcher/CloseButton.qml</file>
         <file>qml/pages/AppLauncher/LauncherItem.qml</file>
         <file>qml/pages/Search.qml</file>
+        <file>qml/pages/Cloud.qml</file>
     </qresource>
 </RCC>

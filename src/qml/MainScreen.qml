@@ -112,6 +112,7 @@ Item {
             }
             z: 10
             model: ListModel {
+                ListElement { iconUrl: ":/images/icons/cloud.png" }
                 ListElement { iconUrl: ":/images/icons/apps.png" }
                 ListElement { iconUrl: ":/images/icons/multitask.png" }
                 ListElement { iconUrl: ":/images/icons/search.png" }
@@ -146,6 +147,11 @@ Item {
                 bottom: parent.bottom
             }
             pages: VisualItemModel {
+                Cloud {
+                    id: cloud
+                    width: pager.width
+                    height: pager.height
+                }
                 AppLauncher {
                     id: launcher
                     width: pager.width
