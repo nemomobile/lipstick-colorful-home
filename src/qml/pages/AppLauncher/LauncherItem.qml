@@ -23,35 +23,45 @@
 // Copyright (c) 2012, Timur Kristóf <venemo@fedoraproject.org>
 
 import QtQuick 1.1
-import org.nemomobile.lipstick 0.1
-import "./AppLauncher"
 
 Item {
-    id: launcherRoot
+    signal clicked()
+    property alias iconFilePath: iconImage.source
+    property alias iconCaption: iconText.text
 
-    property alias cellWidth: gridview.cellWidth
+    id: launcherItem
 
-    GridView {
-        id: gridview
-        width: Math.floor(parent.width / cellWidth) * cellWidth
-        cellWidth: 80 + 60
-        cellHeight: cellWidth
+    // Application icon for the launcher
+    Image {
+        id: iconImage
         anchors {
-            top: parent.top;
-            bottom: parent.bottom;
-            horizontalCenter: parent.horizontalCenter;
-            topMargin: 20
-            bottomMargin: 20
+            top: parent.top
+            horizontalCenter: parent.horizontalCenter
+            margins: 8
         }
+        width: 80
+        height: width
+    }
 
-        model: LauncherModel { }
-
-        delegate: LauncherItem {
-            width: gridview.cellWidth
-            height: gridview.cellHeight
-            iconFilePath: model.object.iconFilePath
-            iconCaption: model.object.title
-            onClicked: model.object.launchApplication();
+    // Caption for the icon
+    Text {
+        id: iconText
+        // elide only works if an explicit width is set
+        width: parent.width
+        elide: Text.ElideRight
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: 20
+        color: 'white'
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: iconImage.bottom
+            topMargin: 5
         }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: launcherItem.clicked()
     }
 }
