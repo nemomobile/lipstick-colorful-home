@@ -34,6 +34,9 @@ Item {
     width: initialSize.width
     height: initialSize.height
     visible: false
+    Component.onCompleted: {
+        tabBar.currentIndex = 2
+    }
 
     // This is used for detecting the current device orientation and
     // adjusting the desktop accordingly.
