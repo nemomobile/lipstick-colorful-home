@@ -6,5 +6,6 @@
         <file>qml/pages/AppSwitcher.qml</file>
         <file>qml/pages/AppSwitcher/SwitcherItem.qml</file>
         <file>qml/MainScreen.qml</file>
+        <file>qml/pages/AppSwitcher/CloseButton.qml</file>
     </qresource>
 </RCC>

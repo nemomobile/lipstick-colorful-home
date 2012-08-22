@@ -28,4 +28,5 @@ OTHER_FILES += \
     qml/pages/AppSwitcher/SwitcherItem.qml \
     qml/components/Pager.qml \
     qml/components/TabBar.qml \
-    qml/MainScreen.qml
+    qml/MainScreen.qml \
+    qml/pages/AppSwitcher/CloseButton.qml

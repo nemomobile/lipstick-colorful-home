@@ -24,32 +24,13 @@
 
 import QtQuick 1.1
 import org.nemomobile.lipstick 0.1
+import "."
 
 Item {
     id: switcherItemRoot
 
-    Text {
-        id:titleText
-        height: 20
-        anchors {
-            left: parent.left
-            right: closeButton.left
-        }
-        color: 'white'
-        smooth: true
-        font.pixelSize: 18
-        text: model.object.title
-        elide: Text.ElideRight
-    }
-
     Item {
-        anchors {
-            top: titleText.bottom
-            bottom: parent.bottom
-            left: parent.left
-            right: parent.right
-            topMargin: 3
-        }
+        anchors.fill: parent
 
         SwitcherPixmapItem {
             id: windowPixmap
@@ -69,41 +50,14 @@ Item {
         onClicked: windowManager.windowToFront(model.object.window)
     }
 
-    Item {
+    CloseButton {
         id: closeButton
-        width: 30
-        height: width
         anchors {
             top: parent.top
             right: parent.right
+            topMargin: -10
+            rightMargin: -10
         }
-
-        Rectangle {
-            anchors.centerIn: parent
-            color: 'red'
-            width: 40
-            height: 8
-            transform: Rotation {
-                angle: 45
-                origin.x: 20
-                origin.y: 4
-            }
-        }
-        Rectangle {
-            anchors.centerIn: parent
-            color: 'red'
-            width: 40
-            height: 8
-            transform: Rotation {
-                angle: -45
-                origin.x: 20
-                origin.y: 4
-            }
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: windowManager.closeWindow(model.object.window)
-        }
+        onClicked: windowManager.closeWindow(model.object.window)
     }
 }

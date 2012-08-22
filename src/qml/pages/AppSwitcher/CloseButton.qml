@@ -19,56 +19,52 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-// Copyright (c) 2011, Tom Swindell <t.swindell@rubyx.co.uk>
 // Copyright (c) 2012, Timur Kristóf <venemo@fedoraproject.org>
 
 import QtQuick 1.1
-import org.nemomobile.lipstick 0.1
-import "./AppSwitcher"
 
-Item {
-    property int columnNumber: 3
-    property int gridMargin: 20
+Rectangle {
+    signal clicked()
 
-    id: switcherRoot
-    clip: true
+    id: closeButton
+    width: 54
+    height: 54
+    radius: 27
+    color: 'red'
 
-    // The actual app switcher grid
-    GridView {
-        id: gridview
-        width: cellWidth * columnNumber
-        cellWidth: (parent.width - gridMargin * 2) / columnNumber + gridMargin / 2
-        cellHeight: (cellWidth - gridMargin / 2) * (desktop.height / desktop.width) + gridMargin / 2
-        anchors {
-            top: parent.top
-            bottom: parent.bottom
-            horizontalCenter: parent.horizontalCenter
-            topMargin: 35
-            bottomMargin: 35
+    Rectangle {
+        color: 'white'
+        anchors.centerIn: parent
+        width: 40
+        height: 40
+        radius: 20
+
+        Rectangle {
+            anchors.centerIn: parent
+            color: 'red'
+            width: 34
+            height: 8
+            transform: Rotation {
+                angle: 45
+                origin.x: 17
+                origin.y: 4
+            }
         }
-
-        model: SwitcherModel {
-            id:switcherModel
-        }
-
-        delegate: Item {
-            width: gridview.cellWidth
-            height: gridview.cellHeight
-
-            SwitcherItem {
-                width: parent.width - gridMargin
-                height: parent.height - gridMargin
-                anchors.centerIn: parent
+        Rectangle {
+            anchors.centerIn: parent
+            color: 'red'
+            width: 34
+            height: 8
+            transform: Rotation {
+                angle: -45
+                origin.x: 17
+                origin.y: 4
             }
         }
     }
 
-    // Empty switcher indicator
-    Text {
-        anchors.centerIn: parent
-        visible: switcherModel.itemCount === 0
-        text: "No apps open"
-        color: "white"
-        font.pixelSize: 30
+    MouseArea {
+        anchors.fill: parent
+        onClicked: closeButton.clicked()
     }
 }
