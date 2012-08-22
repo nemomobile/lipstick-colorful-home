@@ -1,5 +1,15 @@
 <RCC>
-    <qresource prefix="/images">
-        <file alias="background.jpg">images/6057300629_d4c30c058b_o_by_Jonathan_Tellier.jpg</file>
+    <qresource prefix="/">
+        <file alias="images/background.jpg">images/6057300629_d4c30c058b_o_by_Jonathan_Tellier.jpg</file>
+        <file>images/icons/add.png</file>
+        <file>images/icons/apps.png</file>
+        <file>images/icons/cloud.png</file>
+        <file>images/icons/multitask.png</file>
+        <file>images/icons/ok.png</file>
+        <file>images/icons/refresh.png</file>
+        <file>images/icons/remove.png</file>
+        <file>images/icons/search.png</file>
+        <file>images/icons/settings.png</file>
+        <file>images/icons/star.png</file>
     </qresource>
 </RCC>

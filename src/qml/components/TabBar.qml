@@ -23,6 +23,51 @@
 
 import QtQuick 1.1
 
-Item {
+Rectangle {
+    property alias model: tabIconRepeater.model
+    property variant currentIndex: 0
 
+    color: "white"
+    height: 80
+
+    Row {
+        id: tabsRow
+        spacing: 20
+        anchors.centerIn: parent
+        z: 11
+
+        Repeater {
+            id: tabIconRepeater
+            delegate: Item {
+                id: tabItem
+                width: 64
+                height: 64
+
+                Image {
+                    anchors.fill: parent
+                    source: iconUrl
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: currentIndex = index
+                }
+            }
+        }
+    }
+
+    Rectangle {
+        id: tabActiveIndicator
+        color: "white"
+        x: tabsRow.x + tabsRow.children[currentIndex].x + 11
+        anchors.top: parent.bottom
+        anchors.topMargin: -30
+        height: 40
+        width: 40
+        transform: Rotation {
+            origin.x: tabActiveIndicator.height / 2
+            origin.y: tabActiveIndicator.height / 2
+            angle: -45
+        }
+    }
 }

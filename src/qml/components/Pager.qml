@@ -25,21 +25,22 @@ import QtQuick 1.1
 
 Item {
     property alias pages: view.model
+    property alias currentIndex: view.currentIndex
 
     PathView {
         id: view
         highlightRangeMode: PathView.StrictlyEnforceRange
         preferredHighlightBegin: 0.5
         preferredHighlightEnd: 0.5
-        clip: true
-        flickDeceleration: 500000
+        flickDeceleration: 10000
+        highlightMoveDuration: 100
         anchors.fill: parent
         path: Path {
-            startX: - viewPage.width * itemModel.count / 2 + viewPage.width / 2
-            startY: pageHeight / 2
+            startX: - width * pages.count / 2 + width / 2
+            startY: height / 2
             PathLine {
-                x: viewPage.width * itemModel.count / 2 + viewPage.width / 2
-                y: pageHeight / 2
+                x: width * pages.count / 2 + width / 2
+                y: height / 2
             }
         }
     }

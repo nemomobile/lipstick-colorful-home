@@ -29,76 +29,68 @@ import "./components"
 import "./pages"
 
 Item {
-    property bool isPortrait: false;
-
     id: mainScreen
     width: initialSize.width
     height: initialSize.height
 
-//    OrientationSensor {
-//        id: orientation
-//        active: true
+    OrientationSensor {
+        id: orientationSensor
+        active: true
 
-//        onReadingChanged: {
-//            var orientationChanged = false;
-//            var previousIndex = Math.round(dashboard.contentX / dashboard.width);
-
-//            if (reading.orientation === OrientationReading.TopUp && !isPortrait) {
-//                // The top of the device is upwards - meaning: portrait
-//                isPortrait = true;
-//                desktopRotation.angle = -90;
-//                desktop.width = mainScreen.height;
-//                desktop.height = mainScreen.width;
-//                orientationChanged = true;
-//            }
-//            if (reading.orientation === OrientationReading.RightUp && isPortrait) {
-//                // The right side of the device is upwards - meaning: landscape
-//                isPortrait = false;
-//                desktopRotation.angle = 0;
-//                desktop.width = mainScreen.width;
-//                desktop.height = mainScreen.height;
-//                orientationChanged = true;
-//            }
-
-//            if (orientationChanged)
-//                dashboard.contentX = previousIndex * dashboard.width;
-
-//            console.log(launcher.width);
-//            console.log(launcher.height);
-//        }
-//    }
+        onReadingChanged: {
+            if (reading.orientation === OrientationReading.TopUp && !desktop.isPortrait) {
+                // The top of the device is upwards - meaning: portrait
+                desktop.isPortrait = true;
+            }
+            if (reading.orientation === OrientationReading.RightUp && desktop.isPortrait) {
+                // The right side of the device is upwards - meaning: landscape
+                desktop.isPortrait = false;
+            }
+        }
+    }
 
     Item {
-        property bool isPortrait : height > width
+        property bool isPortrait: false
 
         id: desktop
         anchors.top: parent.top
         anchors.left: parent.left
-        width: parent.width
-        height: parent.height
+        width: isPortrait ? parent.height : parent.width
+        height: isPortrait ? parent.width : parent.height
         transform: Rotation {
-            id: desktopRotation;
-            origin.x: mainScreen.height / 2;
-            origin.y: mainScreen.height / 2;
-            angle: 0
+            id: desktopRotation
+            origin.x: mainScreen.height / 2
+            origin.y: mainScreen.height / 2
+            angle: desktop.isPortrait ? -90 : 0
         }
 
+        // The background image
         Image {
             id: background
-            anchors.fill: parent
             source: ':/images/background.jpg'
             fillMode: Image.PreserveAspectFit
+            width: desktop.isPortrait ? undefined : parent.width
+            height: desktop.isPortrait ? parent.height : undefined
+            anchors.left: parent.left
+            anchors.bottom: parent.bottom
         }
+
+        // Black overlay for making white text readable
         Rectangle {
-            id:overlay
-            anchors.fill:parent
-            opacity:0.6
-            color:'black'
+            id: overlay
+            anchors.fill: parent
+            opacity: 0.6
+            color: 'black'
         }
+
+        // Black background for the status bar (until it's loaded)
         Rectangle {
             color: 'black'
             anchors.fill: statusBar
+            z: 10
         }
+
+        // System status bar
         StatusBar {
             id: statusBar
             anchors {
@@ -106,14 +98,50 @@ Item {
                 left: parent.left
                 right: parent.right
             }
-            isPortrait: mainScreen.isPortrait
+            isPortrait: desktop.isPortrait
+            z: 10
         }
 
-        AppLauncher {
-            id: launcher
-            width: desktop.width
-            height: desktop.height
-            anchors.centerIn: desktop
+        // Tab bar on the top for a quick way of selecting a page
+        TabBar {
+            id: tabBar
+            anchors {
+                top: statusBar.bottom
+                left: parent.left
+                right: parent.right
+            }
+            z: 10
+            model: ListModel {
+                ListElement { iconUrl: ":/images/icons/apps.png" }
+                ListElement { iconUrl: ":/images/icons/multitask.png" }
+            }
+
+            onCurrentIndexChanged: pager.currentIndex = tabBar.currentIndex
+        }
+
+        // Pager for swiping between different pages of the home screen
+        Pager {
+            id: pager
+            anchors {
+                top: tabBar.bottom
+                left: parent.left
+                right: parent.right
+                bottom: parent.bottom
+            }
+            pages: VisualItemModel {
+                AppLauncher {
+                    id: launcher
+                    width: pager.width
+                    height: pager.height
+                }
+                AppSwitcher {
+                    id: switcher
+                    width: pager.width
+                    height: pager.height
+                    columnNumber: 2
+                }
+            }
+            onCurrentIndexChanged: tabBar.currentIndex = pager.currentIndex
         }
     }
 }
