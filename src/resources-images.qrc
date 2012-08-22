@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="background.jpg">images/6057300629_d4c30c058b_o_by_Jonathan_Tellier.jpg</file>
+    </qresource>
+</RCC>

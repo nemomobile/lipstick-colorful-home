@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/components/Pager.qml</file>
+        <file>qml/components/TabBar.qml</file>
+        <file>qml/pages/AppLauncher.qml</file>
+        <file>qml/pages/AppSwitcher.qml</file>
+        <file>qml/pages/AppSwitcher/SwitcherItem.qml</file>
+        <file>qml/MainScreen.qml</file>
+    </qresource>
+</RCC>
