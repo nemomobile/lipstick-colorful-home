@@ -30,4 +30,5 @@ OTHER_FILES += \
     qml/components/TabBar.qml \
     qml/MainScreen.qml \
     qml/pages/AppSwitcher/CloseButton.qml \
-    qml/pages/AppLauncher/LauncherItem.qml
+    qml/pages/AppLauncher/LauncherItem.qml \
+    qml/pages/Search.qml

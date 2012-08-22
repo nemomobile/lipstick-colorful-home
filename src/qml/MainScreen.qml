@@ -114,6 +114,7 @@ Item {
             model: ListModel {
                 ListElement { iconUrl: ":/images/icons/apps.png" }
                 ListElement { iconUrl: ":/images/icons/multitask.png" }
+                ListElement { iconUrl: ":/images/icons/search.png" }
             }
 
             onCurrentIndexChanged: pager.currentIndex = tabBar.currentIndex
@@ -155,6 +156,11 @@ Item {
                     width: pager.width
                     height: pager.height
                     columnNumber: 2
+                }
+                Search {
+                    id: search
+                    width: pager.width
+                    height: pager.height
                 }
             }
             onCurrentIndexChanged: tabBar.currentIndex = pager.currentIndex
