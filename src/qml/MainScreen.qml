@@ -64,25 +64,6 @@ Item {
             angle: desktop.isPortrait ? -90 : 0
         }
 
-        // The background image
-        Image {
-            id: background
-            source: ':/images/background.jpg'
-            fillMode: Image.PreserveAspectFit
-            width: desktop.isPortrait ? undefined : parent.width
-            height: desktop.isPortrait ? parent.height : undefined
-            anchors.left: parent.left
-            anchors.bottom: parent.bottom
-        }
-
-        // Black overlay for making white text readable
-        Rectangle {
-            id: overlay
-            anchors.fill: parent
-            opacity: 0.6
-            color: 'black'
-        }
-
         // Black background for the status bar (until it's loaded)
         Rectangle {
             color: 'black'
@@ -117,6 +98,22 @@ Item {
             }
 
             onCurrentIndexChanged: pager.currentIndex = tabBar.currentIndex
+        }
+
+        // The background image
+        Image {
+            id: background
+            source: ':/images/background.jpg'
+            fillMode: Image.Stretch
+            anchors.fill: pager
+
+            // Black overlay for making white text readable
+            Rectangle {
+                id: overlay
+                anchors.fill: parent
+                opacity: 0.55
+                color: 'black'
+            }
         }
 
         // Pager for swiping between different pages of the home screen
