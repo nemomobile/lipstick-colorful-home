@@ -26,6 +26,9 @@ import QtQuick 1.1
 import org.nemomobile.lipstick 0.1
 import "./AppSwitcher"
 
+// App Switcher page
+// The place for browsing already running apps
+
 Item {
     property int columnNumber: 3
     property int gridMargin: 20

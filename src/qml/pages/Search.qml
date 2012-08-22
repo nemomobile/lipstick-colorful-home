@@ -25,7 +25,11 @@
 import QtQuick 1.1
 import com.nokia.meego 1.0
 
+// Search page
+// for searching apps and user files.
+
 Item {
+    // Search text field
     TextField {
         anchors {
             left: parent.left

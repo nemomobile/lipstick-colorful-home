@@ -24,6 +24,11 @@
 
 import QtQuick 1.1
 
+// Cloud page
+// the place for things that come from "the cloud", such as:
+// content from social networks and that kind of thing.
+// This is basically our version of and "event feed".
+
 Item {
     Text {
         font.pixelSize: 30

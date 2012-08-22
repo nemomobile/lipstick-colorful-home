@@ -26,6 +26,9 @@ import QtQuick 1.1
 import org.nemomobile.lipstick 0.1
 import "./AppLauncher"
 
+// App Launcher page
+// the place for browsing installed applications and launching them
+
 Item {
     id: launcherRoot
 
