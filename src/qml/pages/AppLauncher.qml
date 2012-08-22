@@ -40,7 +40,7 @@ Item {
             top: parent.top;
             bottom: parent.bottom;
             horizontalCenter: parent.horizontalCenter;
-            topMargin: 20
+            topMargin: 30
             bottomMargin: 20
         }
 
