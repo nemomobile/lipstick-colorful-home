@@ -10,5 +10,6 @@
         <file>qml/pages/AppLauncher/LauncherItem.qml</file>
         <file>qml/pages/Search.qml</file>
         <file>qml/pages/Cloud.qml</file>
+        <file>qml/pages/Favorites.qml</file>
     </qresource>
 </RCC>

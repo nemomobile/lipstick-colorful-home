@@ -112,6 +112,7 @@ Item {
             }
             z: 10
             model: ListModel {
+                ListElement { iconUrl: ":/images/icons/star.png" }
                 ListElement { iconUrl: ":/images/icons/cloud.png" }
                 ListElement { iconUrl: ":/images/icons/apps.png" }
                 ListElement { iconUrl: ":/images/icons/multitask.png" }
@@ -147,6 +148,11 @@ Item {
                 bottom: parent.bottom
             }
             pages: VisualItemModel {
+                Favorites {
+                    id: favorites
+                    width: pager.width
+                    height: pager.height
+                }
                 Cloud {
                     id: cloud
                     width: pager.width
