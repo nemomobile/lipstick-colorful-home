@@ -24,7 +24,56 @@
 
 import QtQuick 1.1
 
+// Favorites page:
+// the place for user-customizable content such as
+// widgets, notifications, favorite apps, etc.
+
 Item {
+    property variant currentDate: new Date()
+
+    // Day of week
+    Text {
+        id: displayDayOfWeek
+        text: Qt.formatDateTime(currentDate, "dddd")
+        font.pixelSize: 40
+        color: "white"
+        anchors {
+            top: parent.top
+            left: parent.left
+            topMargin: 30
+            leftMargin: 20
+        }
+    }
+
+    // Current date
+    Text {
+        id: displayCurrentDate
+        text: Qt.formatDate(currentDate, Qt.SystemLocaleShortDate)
+        font.pixelSize: 40
+        color: "white"
+        anchors {
+            top: displayDayOfWeek.bottom
+            left: parent.left
+            topMargin: 5
+            leftMargin: 20
+        }
+    }
+
+    // Separator thingy
+    Rectangle {
+        height: 2
+        color: "white"
+        anchors {
+            top: displayCurrentDate.bottom
+            left: parent.left
+            right: parent.right
+            topMargin: 5
+            leftMargin: 20
+            rightMargin: 20
+        }
+    }
+
+
     Text {
         font.pixelSize: 30
         text: "TODO: implement me"
