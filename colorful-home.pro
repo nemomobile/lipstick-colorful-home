@@ -29,3 +29,6 @@ QMAKE_DISTCLEAN += \
     */Makefile \
     build-stamp \
     configure-stamp
+
+OTHER_FILES += \
+    README.md
