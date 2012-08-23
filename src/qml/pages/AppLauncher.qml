@@ -34,29 +34,40 @@ Item {
 
     property alias cellWidth: gridview.cellWidth
 
-    GridView {
-        id: gridview
-        width: Math.floor(parent.width / cellWidth) * cellWidth
-        cellWidth: 80 + 60
-        cellHeight: cellWidth
-        cacheBuffer: 40
+    Flickable {
+        contentHeight: launcherContents.height
         anchors {
-            top: parent.top;
-            bottom: parent.bottom;
-            horizontalCenter: parent.horizontalCenter;
+            fill: parent
             topMargin: 30
             bottomMargin: 20
         }
 
-        model: LauncherModel { }
+        Column {
+            id: launcherContents
+            spacing: 15
+            width: parent.width
 
-        delegate: LauncherItem {
-            id: launcherItem
-            width: gridview.cellWidth
-            height: gridview.cellHeight
-            iconFilePath: model.object.iconFilePath === "" ? ":/images/icons/apps.png" : model.object.iconFilePath
-            iconCaption: model.object.title
-            onClicked: model.object.launchApplication();
+            GridView {
+                id: gridview
+                width: Math.floor(parent.width / cellWidth) * cellWidth
+                cellWidth: 80 + 60
+                cellHeight: cellWidth
+                cacheBuffer: 40
+                height: contentHeight
+                interactive: false
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                model: LauncherModel { }
+
+                delegate: LauncherItem {
+                    id: launcherItem
+                    width: gridview.cellWidth
+                    height: gridview.cellHeight
+                    iconFilePath: model.object.iconFilePath === "" ? ":/images/icons/apps.png" : model.object.iconFilePath
+                    iconCaption: model.object.title
+                    onClicked: model.object.launchApplication();
+                }
+            }
         }
     }
 }
