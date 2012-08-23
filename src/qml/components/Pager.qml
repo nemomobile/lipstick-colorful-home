@@ -34,6 +34,7 @@ Item {
         preferredHighlightEnd: 0.5
         flickDeceleration: 10000
         highlightMoveDuration: 100
+        clip: true
         anchors.fill: parent
         path: Path {
             startX: - width * pages.count / 2 + width / 2
