@@ -29,45 +29,32 @@ import "./AppLauncher"
 // App Launcher page
 // the place for browsing installed applications and launching them
 
-Item {
+Flickable {
     id: launcherRoot
 
     property alias cellWidth: gridview.cellWidth
+    contentHeight: gridview.height
+    anchors.topMargin: 30
+    anchors.bottomMargin: 20
 
-    Flickable {
-        contentHeight: launcherContents.height
-        anchors {
-            fill: parent
-            topMargin: 30
-            bottomMargin: 20
-        }
+    GridView {
+        id: gridview
+        cellWidth: 80 + 60
+        cellHeight: cellWidth
+        width: Math.floor(parent.width / cellWidth) * cellWidth
+        height: contentHeight
+        interactive: false
+        anchors.horizontalCenter: parent.horizontalCenter
 
-        Column {
-            id: launcherContents
-            spacing: 15
-            width: parent.width
+        model: LauncherModel { }
 
-            GridView {
-                id: gridview
-                width: Math.floor(parent.width / cellWidth) * cellWidth
-                cellWidth: 80 + 60
-                cellHeight: cellWidth
-                cacheBuffer: 40
-                height: contentHeight
-                interactive: false
-                anchors.horizontalCenter: parent.horizontalCenter
-
-                model: LauncherModel { }
-
-                delegate: LauncherItem {
-                    id: launcherItem
-                    width: gridview.cellWidth
-                    height: gridview.cellHeight
-                    iconFilePath: model.object.iconFilePath === "" ? ":/images/icons/apps.png" : model.object.iconFilePath
-                    iconCaption: model.object.title
-                    onClicked: model.object.launchApplication();
-                }
-            }
+        delegate: LauncherItem {
+            id: launcherItem
+            width: gridview.cellWidth
+            height: gridview.cellHeight
+            iconFilePath: model.object.iconFilePath === "" ? ":/images/icons/apps.png" : model.object.iconFilePath
+            iconCaption: model.object.title
+            onClicked: model.object.launchApplication();
         }
     }
 }
