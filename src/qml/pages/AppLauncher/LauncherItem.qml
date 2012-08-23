@@ -24,12 +24,9 @@
 
 import QtQuick 1.1
 
-Item {
-    signal clicked()
+MouseArea {
     property alias iconFilePath: iconImage.source
     property alias iconCaption: iconText.text
-
-    id: launcherItem
 
     // Application icon for the launcher
     Image {
@@ -64,10 +61,5 @@ Item {
             top: iconImage.bottom
             topMargin: 5
         }
-    }
-
-    MouseArea {
-        anchors.fill: parent
-        onClicked: launcherItem.clicked()
     }
 }
