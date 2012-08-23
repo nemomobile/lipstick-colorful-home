@@ -39,6 +39,7 @@ Item {
         width: Math.floor(parent.width / cellWidth) * cellWidth
         cellWidth: 80 + 60
         cellHeight: cellWidth
+        cacheBuffer: 40
         anchors {
             top: parent.top;
             bottom: parent.bottom;
@@ -50,9 +51,10 @@ Item {
         model: LauncherModel { }
 
         delegate: LauncherItem {
+            id: launcherItem
             width: gridview.cellWidth
             height: gridview.cellHeight
-            iconFilePath: model.object.iconFilePath
+            iconFilePath: model.object.iconFilePath === "" ? ":/images/icons/apps.png" : model.object.iconFilePath
             iconCaption: model.object.title
             onClicked: model.object.launchApplication();
         }

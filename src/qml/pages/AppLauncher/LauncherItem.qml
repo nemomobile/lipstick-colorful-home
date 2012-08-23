@@ -41,6 +41,12 @@ Item {
         }
         width: 80
         height: width
+        asynchronous: true
+        onStatusChanged: {
+            if (status === Image.Error) {
+                iconImage.source = ":/images/icons/apps.png";
+            }
+        }
     }
 
     // Caption for the icon
