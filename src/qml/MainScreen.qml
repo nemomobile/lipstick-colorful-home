@@ -34,9 +34,9 @@ Item {
     width: initialSize.width
     height: initialSize.height
     visible: false
-    Component.onCompleted: {
-        tabBar.currentIndex = 2
-    }
+//    Component.onCompleted: {
+//        tabBar.currentIndex = 2
+//    }
 
     // This is used for detecting the current device orientation and
     // adjusting the desktop accordingly.
@@ -115,11 +115,11 @@ Item {
             }
             z: 10
             model: ListModel {
-                ListElement { iconUrl: ":/images/icons/star.png" }
-                ListElement { iconUrl: ":/images/icons/cloud.png" }
+//                ListElement { iconUrl: ":/images/icons/star.png" }
+//                ListElement { iconUrl: ":/images/icons/cloud.png" }
                 ListElement { iconUrl: ":/images/icons/apps.png" }
                 ListElement { iconUrl: ":/images/icons/multitask.png" }
-                ListElement { iconUrl: ":/images/icons/search.png" }
+//                ListElement { iconUrl: ":/images/icons/search.png" }
             }
 
             onCurrentIndexChanged: pager.currentIndex = tabBar.currentIndex
@@ -151,6 +151,7 @@ Item {
                 bottom: parent.bottom
             }
             pages: VisualItemModel {
+/*
                 Favorites {
                     id: favorites
                     width: pager.width
@@ -161,6 +162,7 @@ Item {
                     width: pager.width
                     height: pager.height
                 }
+*/
                 AppLauncher {
                     id: launcher
                     width: pager.width
@@ -172,11 +174,13 @@ Item {
                     height: pager.height
                     columnNumber: 2
                 }
+/*
                 Search {
                     id: search
                     width: pager.width
                     height: pager.height
                 }
+*/
             }
             onCurrentIndexChanged: tabBar.currentIndex = pager.currentIndex
         }
