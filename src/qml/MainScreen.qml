@@ -184,5 +184,11 @@ Item {
             }
             onCurrentIndexChanged: tabBar.currentIndex = pager.currentIndex
         }
+
+        Lockscreen {
+            height: desktop.height
+            width: desktop.width
+            z: 200
+        }
     }
 }
