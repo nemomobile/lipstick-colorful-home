@@ -33,7 +33,6 @@ Item {
     id: mainScreen
     width: LipstickSettings.screenSize.width
     height: LipstickSettings.screenSize.height
-    visible: true
 
     // This is used for detecting the current device orientation and
     // adjusting the desktop accordingly.
@@ -55,7 +54,7 @@ Item {
 
     // This is the "desktop" - the item whose size changes when the orientation changes
     Item {
-        property bool isPortrait: false
+        property bool isPortrait: LipstickSettings.getIsInPortrait()
 
         id: desktop
         anchors.top: parent.top
