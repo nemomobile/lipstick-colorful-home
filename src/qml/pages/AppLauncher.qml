@@ -42,7 +42,7 @@ Flickable {
         cellWidth: 80 + 60
         cellHeight: cellWidth
         width: Math.floor(parent.width / cellWidth) * cellWidth
-        height: contentHeight
+        height: gridview.contentHeight
         interactive: false
         anchors.horizontalCenter: parent.horizontalCenter
 

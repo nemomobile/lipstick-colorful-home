@@ -31,12 +31,9 @@ import "./pages"
 // The item representing the main screen; size is constant
 Item {
     id: mainScreen
-    width: initialSize.width
-    height: initialSize.height
+    width: LipstickSettings.getScreenSize().width
+    height: LipstickSettings.getScreenSize().height
     visible: true
-    Component.onCompleted: {
-        tabBar.currentIndex = 2
-    }
 
     // This is used for detecting the current device orientation and
     // adjusting the desktop accordingly.
