@@ -101,11 +101,11 @@ Item {
             }
             z: 10
             model: ListModel {
-                ListElement { iconUrl: ":/images/icons/star.png" }
-                ListElement { iconUrl: ":/images/icons/cloud.png" }
+//                ListElement { iconUrl: ":/images/icons/star.png" }
+//                ListElement { iconUrl: ":/images/icons/cloud.png" }
                 ListElement { iconUrl: ":/images/icons/apps.png" }
                 ListElement { iconUrl: ":/images/icons/multitask.png" }
-                ListElement { iconUrl: ":/images/icons/search.png" }
+//                ListElement { iconUrl: ":/images/icons/search.png" }
             }
 
             onCurrentIndexChanged: pager.currentIndex = tabBar.currentIndex
@@ -137,6 +137,7 @@ Item {
                 bottom: parent.bottom
             }
             pages: VisualItemModel {
+/*
                 Favorites {
                     id: favorites
                     width: pager.width
@@ -147,6 +148,7 @@ Item {
                     width: pager.width
                     height: pager.height
                 }
+*/
                 AppLauncher {
                     id: launcher
                     width: pager.width
@@ -158,13 +160,21 @@ Item {
                     height: pager.height
                     columnNumber: 2
                 }
+/*y
                 Search {
                     id: search
                     width: pager.width
                     height: pager.height
                 }
+*/
             }
             onCurrentIndexChanged: tabBar.currentIndex = pager.currentIndex
+        }
+
+        Lockscreen {
+            height: desktop.height
+            width: desktop.width
+            z: 200
         }
     }
 }

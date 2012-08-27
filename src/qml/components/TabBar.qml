@@ -70,4 +70,8 @@ Rectangle {
             angle: -45
         }
     }
+
+    MouseArea {
+        anchors.fill: parent
+    }
 }

@@ -29,6 +29,7 @@ OTHER_FILES += \
     qml/components/Pager.qml \
     qml/components/TabBar.qml \
     qml/MainScreen.qml \
+    qml/components/Lockscreen.qml \
     qml/pages/AppSwitcher/CloseButton.qml \
     qml/pages/AppLauncher/LauncherItem.qml \
     qml/pages/Search.qml \
