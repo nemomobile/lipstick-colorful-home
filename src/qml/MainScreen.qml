@@ -33,7 +33,7 @@ Item {
     id: mainScreen
     width: initialSize.width
     height: initialSize.height
-    visible: false
+    visible: true
     Component.onCompleted: {
         tabBar.currentIndex = 2
     }
@@ -53,21 +53,7 @@ Item {
                 // The right side of the device is upwards - meaning: landscape
                 desktop.isPortrait = false;
             }
-
-            // Prevent flickering if the desktop is started in portrait,
-            // thus only showing it after the first orientation reading is received
-            if (!mainScreen.visible)
-                mainScreen.visible = true;
         }
-    }
-
-    // If the orientation sensor doesn't work for some reason,
-    // this will still show the desktop anyway.
-    Timer {
-        interval: 2000
-        repeat: false
-        triggeredOnStart: true
-        onTriggered: mainScreen.visible = true
     }
 
     // This is the "desktop" - the item whose size changes when the orientation changes
