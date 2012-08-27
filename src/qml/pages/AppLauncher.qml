@@ -34,8 +34,6 @@ Flickable {
 
     property alias cellWidth: gridview.cellWidth
     contentHeight: gridview.height
-    anchors.topMargin: 30
-    anchors.bottomMargin: 20
 
     GridView {
         id: gridview
@@ -44,7 +42,11 @@ Flickable {
         width: Math.floor(parent.width / cellWidth) * cellWidth
         height: gridview.contentHeight
         interactive: false
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            top: parent.top
+            topMargin: 30
+        }
 
         model: LauncherModel { }
 
