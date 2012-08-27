@@ -31,8 +31,8 @@ import "./pages"
 // The item representing the main screen; size is constant
 Item {
     id: mainScreen
-    width: LipstickSettings.getScreenSize().width
-    height: LipstickSettings.getScreenSize().height
+    width: LipstickSettings.screenSize.width
+    height: LipstickSettings.screenSize.height
     visible: true
 
     // This is used for detecting the current device orientation and
