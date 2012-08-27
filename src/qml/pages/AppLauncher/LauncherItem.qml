@@ -41,6 +41,7 @@ MouseArea {
         asynchronous: true
         onStatusChanged: {
             if (status === Image.Error) {
+                console.log("Error loading an app icon, falling back to default.");
                 iconImage.source = ":/images/icons/apps.png";
             }
         }
