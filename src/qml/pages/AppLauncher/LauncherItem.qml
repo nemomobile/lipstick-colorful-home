@@ -32,9 +32,7 @@ MouseArea {
     Image {
         id: iconImage
         anchors {
-            top: parent.top
-            horizontalCenter: parent.horizontalCenter
-            margins: 8
+            centerIn: parent
         }
         width: 80
         height: width
@@ -43,6 +41,45 @@ MouseArea {
             if (status === Image.Error) {
                 console.log("Error loading an app icon, falling back to default.");
                 iconImage.source = ":/images/icons/apps.png";
+            }
+        }
+
+        Connections {
+            target: model.object
+            onIsLaunchingChanged: {
+                if (model.object.isLaunching) {
+                    launchAnimationStage1.start()
+                }
+                else {
+                    if (launchAnimationStage1.running)
+                        launchAnimationStage1.stop();
+                    if (launchAnimationStage2.running)
+                        launchAnimationStage2.stop();
+
+                    iconImage.scale = 1.0;
+                }
+            }
+        }
+        NumberAnimation on scale {
+            id: launchAnimationStage1
+            from: 1
+            to: 0.6
+            duration: 700
+            onCompleted: {
+                if (model.object.isLaunching)
+                    launchAnimationStage2.start();
+                else
+                    iconImage.scale = 1.0;
+            }
+        }
+        NumberAnimation on scale {
+            id: launchAnimationStage2
+            from: 0.6
+            to: 1
+            duration: 700
+            onCompleted: {
+                if (model.object.isLaunching)
+                    launchAnimationStage1.start();
             }
         }
     }
@@ -60,7 +97,7 @@ MouseArea {
             left: parent.left
             right: parent.right
             top: iconImage.bottom
-            topMargin: 5
+            topMargin: 10
         }
     }
 }
