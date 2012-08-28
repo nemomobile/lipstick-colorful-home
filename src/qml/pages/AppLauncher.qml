@@ -33,7 +33,7 @@ Flickable {
     id: launcherRoot
 
     property alias cellWidth: gridview.cellWidth
-    contentHeight: gridview.height
+    contentHeight: gridview.height + 50
 
     GridView {
         id: gridview

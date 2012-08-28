@@ -32,7 +32,9 @@ MouseArea {
     Image {
         id: iconImage
         anchors {
-            centerIn: parent
+            horizontalCenter: parent.horizontalCenter
+            top: parent.top
+            topMargin: 8
         }
         width: 80
         height: width
@@ -97,7 +99,7 @@ MouseArea {
             left: parent.left
             right: parent.right
             top: iconImage.bottom
-            topMargin: 10
+            topMargin: 5
         }
     }
 }
