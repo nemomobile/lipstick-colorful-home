@@ -3,7 +3,6 @@ import QtQuick 1.1
 Rectangle {
     id: lockScreen
     color: "red"
-    visible: LipstickSettings.lockscreenVisible
 
     states: [
         State {
