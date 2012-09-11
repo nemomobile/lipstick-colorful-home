@@ -62,8 +62,10 @@ MouseArea {
                 }
             }
         }
-        NumberAnimation on scale {
+        NumberAnimation {
             id: launchAnimationStage1
+            target: parent
+            property: "scale"
             from: 1
             to: 0.6
             duration: 700
@@ -74,8 +76,10 @@ MouseArea {
                     iconImage.scale = 1.0;
             }
         }
-        NumberAnimation on scale {
+        NumberAnimation {
             id: launchAnimationStage2
+            target: parent
+            property: "scale"
             from: 0.6
             to: 1
             duration: 700
