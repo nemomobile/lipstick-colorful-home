@@ -46,46 +46,24 @@ MouseArea {
             }
         }
 
-        Connections {
-            target: model.object
-            onIsLaunchingChanged: {
-                if (model.object.isLaunching) {
-                    launchAnimationStage1.start()
-                }
-                else {
-                    if (launchAnimationStage1.running)
-                        launchAnimationStage1.stop();
-                    if (launchAnimationStage2.running)
-                        launchAnimationStage2.stop();
+        SequentialAnimation {
+            id: launchAnimation
+            running: model.object.isLaunching
+            loops: Animation.Infinite
+            alwaysRunToEnd: true
 
-                    iconImage.scale = 1.0;
-                }
+            NumberAnimation {
+                target: iconImage
+                property: "scale"
+                to: 0.6
+                duration: 700
             }
-        }
-        NumberAnimation {
-            id: launchAnimationStage1
-            target: parent
-            property: "scale"
-            from: 1
-            to: 0.6
-            duration: 700
-            onCompleted: {
-                if (model.object.isLaunching)
-                    launchAnimationStage2.start();
-                else
-                    iconImage.scale = 1.0;
-            }
-        }
-        NumberAnimation {
-            id: launchAnimationStage2
-            target: parent
-            property: "scale"
-            from: 0.6
-            to: 1
-            duration: 700
-            onCompleted: {
-                if (model.object.isLaunching)
-                    launchAnimationStage1.start();
+
+            NumberAnimation {
+                target: iconImage
+                property: "scale"
+                to: 1
+                duration: 700
             }
         }
     }
