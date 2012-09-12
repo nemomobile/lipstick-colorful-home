@@ -26,10 +26,6 @@
 
 int main(int argc, char **argv)
 {
-    QApplication::setGraphicsSystem("native");
     HomeApplication app(argc, argv, "qrc:/qml/MainScreen.qml");
-
-    qDebug() << "Good morning! This is colorful-home! :)";
-
     return app.exec();
 }
