@@ -10,7 +10,7 @@ Image {
             when: LipstickSettings.lockscreenVisible
             PropertyChanges {
                 target: lockScreen
-                y: 0
+                y: statusBar.height
             }
         },
         State {

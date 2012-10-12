@@ -26,24 +26,9 @@ import QtQuick 1.1
 import org.nemomobile.lipstick 0.1
 import "."
 
-Item {
+SwitcherPixmapItem {
     id: switcherItemRoot
-
-    Item {
-        anchors.fill: parent
-
-        SwitcherPixmapItem {
-            id: windowPixmap
-            width: desktop.isPortrait ? parent.height : parent.width
-            height: desktop.isPortrait ? parent.width : parent.height
-            windowId: model.object.window
-            transform: Rotation {
-                angle: desktop.isPortrait ? 90 : 0
-                origin.x: windowPixmap.height / 2
-                origin.y: windowPixmap.height / 2
-            }
-        }
-    }
+    windowId: model.object.window
 
     MouseArea {
         anchors.fill: parent

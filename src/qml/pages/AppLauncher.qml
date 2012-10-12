@@ -37,7 +37,7 @@ Flickable {
 
     GridView {
         id: gridview
-        cellWidth: 80 + 60
+        cellWidth: 140
         cellHeight: cellWidth
         width: Math.floor(parent.width / cellWidth) * cellWidth
         height: gridview.contentHeight
@@ -57,6 +57,15 @@ Flickable {
             iconFilePath: model.object.iconFilePath === "" ? ":/images/icons/apps.png" : model.object.iconFilePath
             iconCaption: model.object.title
             onClicked: model.object.launchApplication();
+
+Behavior on y {
+    NumberAnimation {
+    }
+}
+Behavior on x {
+    NumberAnimation {
+    }
+}
         }
     }
 }

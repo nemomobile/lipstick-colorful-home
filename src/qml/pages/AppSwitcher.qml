@@ -41,7 +41,7 @@ Item {
         id: gridview
         width: cellWidth * columnNumber
         cellWidth: (parent.width - gridMargin * 2) / columnNumber + gridMargin / 2
-        cellHeight: (cellWidth - gridMargin / 2) * (desktop.height / desktop.width) + gridMargin / 2
+        cellHeight: (cellWidth - gridMargin / 2) * (mainScreen.height / mainScreen.width) + gridMargin / 2
         anchors {
             top: parent.top
             bottom: parent.bottom
