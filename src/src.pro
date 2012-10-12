@@ -2,7 +2,7 @@
 # Main project file for Colorful Home
 
 TEMPLATE = app
-TARGET = colorful-home
+TARGET = lipstick
 VERSION = 0.1
 
 INSTALLS = target
