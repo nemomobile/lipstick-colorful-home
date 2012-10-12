@@ -10,6 +10,5 @@
         <file>images/icons/search.png</file>
         <file>images/icons/settings.png</file>
         <file>images/icons/star.png</file>
-        <file alias="images/background.jpg">images/Clarity_by_pr09studio.jpg</file>
     </qresource>
 </RCC>

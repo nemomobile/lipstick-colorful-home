@@ -25,6 +25,7 @@
 import QtQuick 1.1
 import QtMobility.sensors 1.2
 import org.nemomobile.lipstick 0.1
+import org.nemomobile.configuration 1.0
 import "./components"
 import "./pages"
 
@@ -107,10 +108,18 @@ Item {
             onCurrentIndexChanged: pager.currentIndex = tabBar.currentIndex
         }
 
+        ConfigurationValue {
+            id: wallpaperSource
+            key: "/desktop/meego/background/portrait/picture_filename"
+            defaultValue: "images/graphics-wallpaper-home.jpg"
+        }
+
+
         // The background image
         Image {
             id: background
-            source: ':/images/background.jpg'
+            // this overcomplicated binding is to make sure we don't get a qrc: prefix
+            source: wallpaperSource.value != wallpaperSource.defaultValue ? "file://" + wallpaperSource.value : wallpaperSource.value
             fillMode: Image.Stretch
             anchors.fill: pager
 
