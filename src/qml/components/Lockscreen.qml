@@ -1,8 +1,9 @@
 import QtQuick 1.1
 
-Rectangle {
+Image {
     id: lockScreen
-    color: "red"
+    // this overcomplicated binding is to make sure we don't get a qrc: prefix
+    source: wallpaperSource.value != wallpaperSource.defaultValue ? "file://" + wallpaperSource.value : wallpaperSource.value
 
     states: [
         State {
