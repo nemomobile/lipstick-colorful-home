@@ -110,7 +110,7 @@ Item {
 
         ConfigurationValue {
             id: wallpaperSource
-            key: "/desktop/meego/background/portrait/picture_filename"
+            key: desktop.isPortrait ? "/desktop/meego/background/portrait/picture_filename" : "/desktop/meego/background/landscape/picture_filename"
             defaultValue: "images/graphics-wallpaper-home.jpg"
         }
 
