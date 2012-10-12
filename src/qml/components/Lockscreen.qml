@@ -2,8 +2,7 @@ import QtQuick 1.1
 
 Image {
     id: lockScreen
-    // this overcomplicated binding is to make sure we don't get a qrc: prefix
-    source: wallpaperSource.value != wallpaperSource.defaultValue ? "file://" + wallpaperSource.value : wallpaperSource.value
+    source: "file://" + wallpaperSource.value
 
     states: [
         State {

@@ -118,8 +118,7 @@ Item {
         // The background image
         Image {
             id: background
-            // this overcomplicated binding is to make sure we don't get a qrc: prefix
-            source: wallpaperSource.value != wallpaperSource.defaultValue ? "file://" + wallpaperSource.value : wallpaperSource.value
+            source: "file://" + wallpaperSource.value
             fillMode: Image.Stretch
             anchors.fill: pager
 
