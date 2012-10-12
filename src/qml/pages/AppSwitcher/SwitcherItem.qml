@@ -42,6 +42,8 @@ Item {
                 origin.x: windowPixmap.height / 2
                 origin.y: windowPixmap.height / 2
             }
+            smooth: true
+            radius: 5
         }
     }
 
