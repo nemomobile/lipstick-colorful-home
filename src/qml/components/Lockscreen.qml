@@ -3,20 +3,30 @@ import QtQuick 1.1
 Image {
     id: lockScreen
     source: "file://" + wallpaperSource.value
+    property bool animating: y != 0 && y != -height
+
+    function hide() {
+        y = -height
+    }
+
+    function show() {
+        y = 0
+    }
 
     // can't use a binding, as we also assign y based on mousearea below
     Connections {
         target: LipstickSettings
         onLockscreenVisibleChanged: {
             if (LipstickSettings.lockscreenVisible)
-                lockScreen.y = 0
+                lockScreen.show()
             else
-                lockScreen.y = -height
+                lockScreen.hide()
         }
     }
 
     Behavior on y {
         id: yBehavior
+        enabled: !mouseArea.fingerDown
         PropertyAnimation {
             properties: "y"
             easing.type: Easing.OutBounce
@@ -25,23 +35,43 @@ Image {
     }
 
     MouseArea {
+        id: mouseArea
         property int pressY: 0
+        property bool fingerDown
+        property bool ignoreEvents
         anchors.fill: parent
-        enabled: LipstickSettings.lockscreenVisible
 
         onPressed: {
-            yBehavior.enabled = false
+            // ignore a press when we're already animating
+            // this can cause jitter in the lockscreen, which
+            // isn't really nice
+            if (lockScreen.animating) {
+                ignoreEvents = true
+                return
+            }
+
+            fingerDown = true
             pressY = mouseY
         }
+
         onPositionChanged: {
+            if (ignoreEvents)
+                return
+
             var delta = pressY - mouseY
             pressY = mouseY + delta
             if (parent.y - delta > 0)
                 return
             parent.y = parent.y - delta
         }
+
         onReleased: {
-            yBehavior.enabled = true
+            if (ignoreEvents) {
+                ignoreEvents = false
+                return
+            }
+
+            fingerDown = false
             if (!LipstickSettings.lockscreenVisible || Math.abs(parent.y) > parent.height / 3) {
                 LipstickSettings.lockscreenVisible = false
 
@@ -49,9 +79,9 @@ Image {
                 // not rely on the connection for the corner-case
                 // where the user drags the lockscreen while it's
                 // animating up.
-                lockScreen.y = -height
+                lockScreen.hide()
             } else if (LipstickSettings.lockscreenVisible) {
-                lockScreen.y = 0
+                lockScreen.show()
             }
         }
     }
