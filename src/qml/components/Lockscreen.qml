@@ -4,25 +4,19 @@ Image {
     id: lockScreen
     source: "file://" + wallpaperSource.value
 
-    states: [
-        State {
-            name: "locked"
-            when: LipstickSettings.lockscreenVisible
-            PropertyChanges {
-                target: lockScreen
-                y: 0
-            }
-        },
-        State {
-            name: "unlocked"
-            when: !LipstickSettings.lockscreenVisible
-            PropertyChanges {
-                target: lockScreen
-                y: -lockScreen.height
-            }
+    // can't use a binding, as we also assign y based on mousearea below
+    Connections {
+        target: LipstickSettings
+        onLockscreenVisibleChanged: {
+            if (LipstickSettings.lockscreenVisible)
+                lockScreen.y = 0
+            else
+                lockScreen.y = -height
         }
-    ]
-    transitions: Transition {
+    }
+
+    Behavior on y {
+        id: yBehavior
         PropertyAnimation {
             properties: "y"
             easing.type: Easing.OutBounce
@@ -33,8 +27,12 @@ Image {
     MouseArea {
         property int pressY: 0
         anchors.fill: parent
+        enabled: LipstickSettings.lockscreenVisible
 
-        onPressed: pressY = mouseY
+        onPressed: {
+            yBehavior.enabled = false
+            pressY = mouseY
+        }
         onPositionChanged: {
             var delta = pressY - mouseY
             pressY = mouseY + delta
@@ -43,14 +41,17 @@ Image {
             parent.y = parent.y - delta
         }
         onReleased: {
-            if (Math.abs(parent.y) > parent.height / 3) {
-                console.log("Going away")
-    
+            yBehavior.enabled = true
+            if (!LipstickSettings.lockscreenVisible || Math.abs(parent.y) > parent.height / 3) {
                 LipstickSettings.lockscreenVisible = false
+
+                // we must explicitly also set height, and
+                // not rely on the connection for the corner-case
+                // where the user drags the lockscreen while it's
+                // animating up.
+                lockScreen.y = -height
             } else if (LipstickSettings.lockscreenVisible) {
-                console.log("No dice")
-                parent.state = "unlocked"
-                parent.state = "locked"
+                lockScreen.y = 0
             }
         }
     }
