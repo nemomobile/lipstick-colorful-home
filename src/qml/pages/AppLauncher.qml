@@ -29,34 +29,31 @@ import "./AppLauncher"
 // App Launcher page
 // the place for browsing installed applications and launching them
 
-Flickable {
-    id: launcherRoot
+GridView {
+    id: gridview
+    cellWidth: 80 + 60
+    cellHeight: cellWidth
+    width: Math.floor(parent.width / cellWidth) * cellWidth
+    cacheBuffer: gridview.contentHeight
+    x: (parent.width - width) / 2 // can't use an anchor because we need to animate our position
 
-    property alias cellWidth: gridview.cellWidth
-    contentHeight: gridview.height + 50
+    // just for margin purposes
+    header: Item {
+        height: 30
+    }
 
-    GridView {
-        id: gridview
-        cellWidth: 80 + 60
-        cellHeight: cellWidth
-        width: Math.floor(parent.width / cellWidth) * cellWidth
-        height: gridview.contentHeight
-        interactive: false
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            top: parent.top
-            topMargin: 30
-        }
+    footer: Item {
+        height: 20
+    }
 
-        model: LauncherModel { }
+    model: LauncherModel { }
 
-        delegate: LauncherItem {
-            id: launcherItem
-            width: gridview.cellWidth
-            height: gridview.cellHeight
-            iconFilePath: model.object.iconFilePath === "" ? ":/images/icons/apps.png" : model.object.iconFilePath
-            iconCaption: model.object.title
-            onClicked: model.object.launchApplication();
-        }
+    delegate: LauncherItem {
+        id: launcherItem
+        width: gridview.cellWidth
+        height: gridview.cellHeight
+        iconFilePath: model.object.iconFilePath === "" ? ":/images/icons/apps.png" : model.object.iconFilePath
+        iconCaption: model.object.title
+        onClicked: model.object.launchApplication();
     }
 }

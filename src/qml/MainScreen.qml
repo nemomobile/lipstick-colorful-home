@@ -155,7 +155,6 @@ Item {
 */
                 AppLauncher {
                     id: launcher
-                    width: pager.width
                     height: pager.height
                 }
                 AppSwitcher {
