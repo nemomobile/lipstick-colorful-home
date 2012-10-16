@@ -140,7 +140,7 @@ Item {
                 right: parent.right
                 bottom: parent.bottom
             }
-            pages: VisualItemModel {
+            model: VisualItemModel {
 /*
                 Favorites {
                     id: favorites
