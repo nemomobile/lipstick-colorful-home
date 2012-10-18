@@ -35,8 +35,9 @@ GridView {
     cellWidth: 80 + 60
     cellHeight: cellWidth
     width: Math.floor(parent.width / cellWidth) * cellWidth
-    cacheBuffer: gridview.contentHeight
+    cacheBuffer: 10000 //gridview.contentHeight
     x: (parent.width - width) / 2 // can't use an anchor because we need to animate our position
+    currentIndex: -1
 
     // just for margin purposes
     header: Item {
@@ -55,6 +56,30 @@ GridView {
         height: gridview.cellHeight
         source: model.object.iconId == "" ? ":/images/icons/apps.png" : (model.object.iconId.indexOf("/") == 0 ? "file://" : "image://theme/") + model.object.iconId
         iconCaption: model.object.title
-        onClicked: model.object.launchApplication();
     }
+
+    MouseArea {
+        id: loc
+        anchors.fill: parent
+        onClicked: {
+            var obj = model.get(gridview.indexAt(mouse.x, mouse.y + gridview.contentY))
+            obj.launchApplication();
+        }
+        onPressAndHold: {
+            gridview.interactive = false
+            pager.interactive = false
+            gridview.currentIndex = gridview.indexAt(mouse.x, mouse.y + gridview.contentY)
+        }
+        onReleased: {
+            gridview.interactive = true
+            pager.interactive = true
+            gridview.currentIndex = -1
+        }
+        onMousePositionChanged: {
+            var index = gridview.indexAt(mouse.x, mouse.y + gridview.contentY)
+            if (gridview.currentIndex != -1 && index != -1 && index != gridview.currentIndex) {
+                gridview.model.move(gridview.currentIndex, index, 1)
+            }   
+        }      
+    }          
 }
