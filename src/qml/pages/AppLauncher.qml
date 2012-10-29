@@ -24,6 +24,7 @@
 
 import QtQuick 1.1
 import org.nemomobile.lipstick 0.1
+import com.nokia.meego 1.2
 import "./AppLauncher"
 
 // App Launcher page
@@ -52,7 +53,7 @@ GridView {
         id: launcherItem
         width: gridview.cellWidth
         height: gridview.cellHeight
-        iconFilePath: model.object.iconFilePath === "" ? ":/images/icons/apps.png" : model.object.iconFilePath
+        source: model.object.iconId == "" ? ":/images/icons/apps.png" : (model.object.iconId.indexOf("/") == 0 ? "file://" : "image://theme/") + model.object.iconId
         iconCaption: model.object.title
         onClicked: model.object.launchApplication();
     }

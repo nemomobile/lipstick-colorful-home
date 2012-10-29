@@ -25,7 +25,7 @@
 import QtQuick 1.1
 
 MouseArea {
-    property alias iconFilePath: iconImage.source
+    property alias source: iconImage.source
     property alias iconCaption: iconText.text
 
     // Application icon for the launcher
