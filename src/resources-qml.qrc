@@ -12,5 +12,6 @@
         <file>qml/pages/Search.qml</file>
         <file>qml/pages/Cloud.qml</file>
         <file>qml/pages/Favorites.qml</file>
+        <file>qml/NotificationPreview.qml</file>
     </qresource>
 </RCC>

@@ -34,4 +34,5 @@ OTHER_FILES += \
     qml/pages/AppLauncher/LauncherItem.qml \
     qml/pages/Search.qml \
     qml/pages/Cloud.qml \
-    qml/pages/Favorites.qml
+    qml/pages/Favorites.qml \
+    qml/NotificationPreview.qml
