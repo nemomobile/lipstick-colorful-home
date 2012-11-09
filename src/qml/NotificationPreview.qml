@@ -49,7 +49,7 @@ Item {
             angle: notificationArea.isPortrait ? -90 : 0
         }
 
-        onClicked: if (notificationPreviewPresenter.notification != null) notificationPreviewPresenter.notification.actionInvoked("clicked")
+        onClicked: if (notificationPreviewPresenter.notification != null) notificationPreviewPresenter.notification.actionInvoked("default")
 
         Rectangle {
             id: notificationPreview
