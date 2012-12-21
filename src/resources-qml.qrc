@@ -13,5 +13,6 @@
         <file>qml/pages/Cloud.qml</file>
         <file>qml/pages/Favorites.qml</file>
         <file>qml/NotificationPreview.qml</file>
+        <file>qml/VolumeControl.qml</file>
     </qresource>
 </RCC>
