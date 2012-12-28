@@ -1,6 +1,6 @@
 import QtQuick 1.1
 import org.nemomobile.lipstick 0.1
-import com.jolla.components 1.0
+import com.nokia.meego 1.0
 
 Item {
     property bool isPortrait: true
