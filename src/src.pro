@@ -36,4 +36,5 @@ OTHER_FILES += \
     qml/pages/Cloud.qml \
     qml/pages/Favorites.qml \
     qml/NotificationPreview.qml \
-    qml/VolumeControl.qml
+    qml/VolumeControl.qml \
+    qml/USBModeSelector.qml

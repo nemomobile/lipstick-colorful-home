@@ -14,5 +14,6 @@
         <file>qml/pages/Favorites.qml</file>
         <file>qml/NotificationPreview.qml</file>
         <file>qml/VolumeControl.qml</file>
+        <file>qml/USBModeSelector.qml</file>
     </qresource>
 </RCC>
