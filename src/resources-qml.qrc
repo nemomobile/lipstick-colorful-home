@@ -15,5 +15,6 @@
         <file>qml/NotificationPreview.qml</file>
         <file>qml/VolumeControl.qml</file>
         <file>qml/USBModeSelector.qml</file>
+        <file>qml/ShutdownScreen.qml</file>
     </qresource>
 </RCC>
