@@ -4,6 +4,23 @@ Image {
     id: lockScreen
     source: "file://" + wallpaperSource.value
     property bool animating: y != 0 && y != -height
+    property bool heightIsChanging: false
+
+    onHeightChanged: {
+        /* Fixes: https://bugs.nemomobile.org/show_bug.cgi?id=521 */
+
+        if (animating) {
+            return;
+        }
+
+        heightIsChanging = true;
+        if (LipstickSettings.lockscreenVisible) {
+            show();
+        } else {
+            hide();
+        }
+        heightIsChanging = false;
+    }
 
     function hide() {
         y = -height
@@ -26,7 +43,7 @@ Image {
 
     Behavior on y {
         id: yBehavior
-        enabled: !mouseArea.fingerDown
+        enabled: !mouseArea.fingerDown && !heightIsChanging
         PropertyAnimation {
             properties: "y"
             easing.type: Easing.OutBounce
