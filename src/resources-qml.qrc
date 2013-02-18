@@ -3,6 +3,7 @@
         <file>qml/components/Pager.qml</file>
         <file>qml/components/TabBar.qml</file>
         <file>qml/components/Lockscreen.qml</file>
+        <file>qml/components/LockscreenClock.qml</file>
         <file>qml/pages/AppLauncher.qml</file>
         <file>qml/pages/AppSwitcher.qml</file>
         <file>qml/pages/AppSwitcher/SwitcherItem.qml</file>

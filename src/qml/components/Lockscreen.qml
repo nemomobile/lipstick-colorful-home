@@ -1,7 +1,5 @@
 import QtQuick 1.1
 
-import org.nemomobile.time 1.0
-
 Image {
     id: lockScreen
     source: "file://" + wallpaperSource.value
@@ -105,32 +103,12 @@ Image {
         }
     }
 
-    WallClock {
-        id: wallClock
-        enabled: LipstickSettings.lockscreenVisible
-        updateFrequency: WallClock.Minute
-    }
-
-    Text {
-        id: timeDisplay
-        font.pixelSize: 130
-        color: "white"
-        horizontalAlignment: Text.AlignHCenter
-        anchors.top: parent.top
-        width: parent.width
-
-        text: Qt.formatDateTime(wallClock.time, "hh:mm")
-    }
-
-    Text {
-        id: dateDisplay
-        horizontalAlignment: Text.AlignHCenter
-        anchors.top: timeDisplay.bottom
-        color: "white"
-        font.pixelSize: 50
-        width: parent.width
-
-        text: Qt.formatDateTime(wallClock.time, "dd/MM/yyyy")
+    LockscreenClock {
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
     }
 }
 
