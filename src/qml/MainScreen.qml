@@ -47,8 +47,6 @@ import "./pages"
 PageStackWindow {
     id: mainScreen
 
-    showStatusBar: !LipstickSettings.lockscreenVisible
-
     // This is used in the favorites page and in the lock screen
     WallClock {
         id: wallClock
