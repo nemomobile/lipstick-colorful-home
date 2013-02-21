@@ -44,16 +44,27 @@ Item {
             }
             smooth: true
             radius: 5
+            opacity: switcherRoot.closeMode ? .6 : 1
         }
     }
 
     MouseArea {
         anchors.fill: parent
-        onClicked: windowManager.windowToFront(model.object.window)
+        onClicked: {
+            if (!switcherRoot.closeMode) {
+                windowManager.windowToFront(model.object.window);
+            }
+        }
+        onPressAndHold: {
+            switcherRoot.closeMode = true;
+        }
     }
 
     CloseButton {
         id: closeButton
+        Behavior on scale { PropertyAnimation { duration: 300; easing.type: Easing.OutBack } }
+        scale: switcherRoot.closeMode ? 1 : 0
+        opacity: scale
         anchors {
             top: parent.top
             right: parent.right
