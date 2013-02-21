@@ -24,6 +24,7 @@
 
 import QtQuick 1.1
 import org.nemomobile.lipstick 0.1
+import com.nokia.meego 1.0
 import "./AppSwitcher"
 
 // App Switcher page
@@ -32,9 +33,18 @@ import "./AppSwitcher"
 Item {
     property int columnNumber: 3
     property int gridMargin: 20
+    property bool closeMode: false
+    property bool visibleInHome: false
 
     id: switcherRoot
     clip: true
+
+    onVisibleInHomeChanged: {
+        // Exit close mode when scrolling out of view
+        if (!visibleInHome && closeMode) {
+            closeMode = false;
+        }
+    }
 
     // The actual app switcher grid
     GridView {
@@ -44,7 +54,7 @@ Item {
         cellHeight: (cellWidth - gridMargin / 2) * (desktop.height / desktop.width) + gridMargin / 2
         anchors {
             top: parent.top
-            bottom: parent.bottom
+            bottom: switcherRoot.closeMode ? toolBar.top : parent.bottom
             horizontalCenter: parent.horizontalCenter
             topMargin: 35
             bottomMargin: 35
@@ -66,10 +76,72 @@ Item {
         }
     }
 
+    Rectangle {
+        color: 'black'
+        border {
+            width: 1
+            color: '#333333'
+        }
+
+        visible: switcherRoot.closeMode
+
+        id: toolBar
+        height: toolBarDone.height + 2*padding
+        property int padding: 9
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+            margins: -1
+            bottomMargin: switcherRoot.closeMode ? 0 : -height
+        }
+
+        Behavior on anchors.bottomMargin { PropertyAnimation { duration: 100 } }
+
+        Button {
+            id: toolBarDone
+            width: parent.width / 3
+            anchors {
+                top: parent.top
+                topMargin: toolBar.padding
+                right: parent.horizontalCenter
+                rightMargin: toolBar.padding
+            }
+            text: 'Done'
+            onClicked: {
+                switcherRoot.closeMode = false;
+            }
+        }
+
+        Button {
+            id: toolBarCloseAll
+            width: toolBarDone.width
+            anchors {
+                top: parent.top
+                topMargin: toolBar.padding
+                left: parent.horizontalCenter
+                leftMargin: toolBar.padding
+            }
+            text: 'Close all'
+            onClicked: {
+                for (var i=switcherModel.itemCount-1; i>=0; i--) {
+                    windowManager.closeWindow(switcherModel.get(i).window);
+                }
+            }
+        }
+    }
+
     // Empty switcher indicator
     Text {
         anchors.centerIn: parent
         visible: switcherModel.itemCount === 0
+        onVisibleChanged: {
+            /* When the last window is closed, exit close mode */
+            if (visible) {
+                switcherRoot.closeMode = false;
+            }
+        }
         text: "No apps open"
         color: "white"
         font.pixelSize: 30

@@ -23,45 +23,11 @@
 
 import QtQuick 1.1
 
-Rectangle {
+Image {
+    id: closeButton
     signal clicked()
 
-    id: closeButton
-    width: 54
-    height: 54
-    radius: 27
-    color: 'red'
-
-    Rectangle {
-        color: 'white'
-        anchors.centerIn: parent
-        width: 40
-        height: 40
-        radius: 20
-
-        Rectangle {
-            anchors.centerIn: parent
-            color: 'red'
-            width: 34
-            height: 8
-            transform: Rotation {
-                angle: 45
-                origin.x: 17
-                origin.y: 4
-            }
-        }
-        Rectangle {
-            anchors.centerIn: parent
-            color: 'red'
-            width: 34
-            height: 8
-            transform: Rotation {
-                angle: -45
-                origin.x: 17
-                origin.y: 4
-            }
-        }
-    }
+    source: 'image://theme/icon-m-framework-close-thumbnail'
 
     MouseArea {
         anchors.fill: parent

@@ -3,8 +3,15 @@ import QtQuick 1.1
 Image {
     id: lockScreen
     source: "file://" + wallpaperSource.value
-    property bool animating: y != 0 && y != -height
+    property bool animating: y != parent.y && y != parent.y-height
     property bool heightIsChanging: false
+
+    /**
+     * openingState should be a value between 0 and 1, where 0 means
+     * the lockscreen is "down" (obscures the view) and 1 means the
+     * lockscreen is "up" (not visible).
+     **/
+    property real openingState: (parent.y - y) / height
 
     onHeightChanged: {
         /* Fixes: https://bugs.nemomobile.org/show_bug.cgi?id=521 */
@@ -23,11 +30,11 @@ Image {
     }
 
     function hide() {
-        y = -height
+        y = parent.y-height
     }
 
     function show() {
-        y = 0
+        y = parent.y
     }
 
     // can't use a binding, as we also assign y based on mousearea below
