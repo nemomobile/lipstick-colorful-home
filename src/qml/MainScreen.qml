@@ -67,6 +67,7 @@ Item {
             origin.x: mainScreen.height / 2
             origin.y: mainScreen.height / 2
             angle: desktop.isPortrait ? -90 : 0
+            Behavior on angle { NumberAnimation { duration: 300; easing.type: Easing.OutCubic } }
         }
 
         // Black background for the status bar (until it's loaded)
