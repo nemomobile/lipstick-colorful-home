@@ -29,14 +29,16 @@ import QtQuick 1.1
 // widgets, notifications, favorite apps, etc.
 
 Item {
-    property variant currentDate: new Date()
+    id: favorites
+    property color primaryColor: 'white'
+    property color secondaryColor: '#888888'
 
     // Day of week
     Text {
         id: displayDayOfWeek
-        text: Qt.formatDateTime(currentDate, "dddd")
+        text: Qt.formatDateTime(wallClock.time, "dddd")
         font.pixelSize: 40
-        color: "white"
+        color: favorites.primaryColor
         anchors {
             top: parent.top
             left: parent.left
@@ -48,9 +50,9 @@ Item {
     // Current date
     Text {
         id: displayCurrentDate
-        text: Qt.formatDate(currentDate, Qt.SystemLocaleShortDate)
-        font.pixelSize: 40
-        color: "white"
+        text: Qt.formatDate(wallClock.time, Qt.SystemLocaleShortDate)
+        font.pixelSize: 25
+        color: favorites.secondaryColor
         anchors {
             top: displayDayOfWeek.bottom
             left: parent.left
@@ -62,7 +64,7 @@ Item {
     // Separator thingy
     Rectangle {
         height: 2
-        color: "white"
+        color: favorites.secondaryColor
         anchors {
             top: displayCurrentDate.bottom
             left: parent.left
@@ -71,12 +73,5 @@ Item {
             leftMargin: 20
             rightMargin: 20
         }
-    }
-
-
-    Text {
-        font.pixelSize: 30
-        text: "TODO: implement me"
-        anchors.centerIn: parent
     }
 }

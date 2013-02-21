@@ -1,6 +1,5 @@
 
 import QtQuick 1.1
-import org.nemomobile.time 1.0
 
 Rectangle {
     id: lockscreenClock
@@ -12,12 +11,6 @@ Rectangle {
         GradientStop { position: 0.0; color: '#dd000000' }
         GradientStop { position: 0.5; color: '#aa000000' }
         GradientStop { position: 1.0; color: '#00000000' }
-    }
-
-    WallClock {
-        id: wallClock
-        enabled: LipstickSettings.lockscreenVisible
-        updateFrequency: WallClock.Minute
     }
 
     Column {
