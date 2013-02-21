@@ -25,20 +25,11 @@
 import QtQuick 1.1
 import QtMobility.sensors 1.2
 
-/**
- * Dirty Hack Alarm!
-
- * In order for lipstick's StatusBar to win over Harmattan Qt Components's
- * StatusBar, we need to import com.nokia.meego first. If the order is
- * wrong, you might see "StatusBar doesn't have an isPortrait property".
- *
- * Therefore: com.nokia.meego must be imported before org.nemomobile.lipstick
- **/
-import com.nokia.meego 1.0
 import org.nemomobile.lipstick 0.1
-
 import org.nemomobile.configuration 1.0
 import org.nemomobile.time 1.0
+
+import com.nokia.meego 1.0
 
 import "./components"
 import "./pages"
@@ -98,17 +89,6 @@ PageStackWindow {
 
                 // Initial view should be the AppLauncher
                 currentIndex: 1
-            }
-
-            /**
-             * Non-visual, needed to set _MEEGOTOUCH_ORIENTATION_ANGLE, because
-             * otherwise qt-components' setting of this XAtom conflicts with
-             * lipstick's handling of the status bar.
-             *
-             * This is org.nemomobile.lipstick.StatusBar (see above for details)
-             **/
-            StatusBar {
-                isPortrait: desktop.isPortrait
             }
 
             Lockscreen {
