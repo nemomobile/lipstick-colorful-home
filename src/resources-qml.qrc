@@ -8,7 +8,6 @@
         <file>qml/pages/AppSwitcher.qml</file>
         <file>qml/pages/AppSwitcher/SwitcherItem.qml</file>
         <file>qml/MainScreen.qml</file>
-        <file>qml/pages/AppSwitcher/CloseButton.qml</file>
         <file>qml/pages/AppLauncher/LauncherItem.qml</file>
         <file>qml/pages/Search.qml</file>
         <file>qml/pages/Cloud.qml</file>

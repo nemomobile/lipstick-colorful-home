@@ -52,13 +52,20 @@ Item {
         onClicked: windowManager.windowToFront(model.object.window)
     }
 
-    CloseButton {
+    Image {
+        signal clicked()
+
         id: closeButton
         anchors {
             top: parent.top
             right: parent.right
             topMargin: -10
             rightMargin: -10
+        }
+        source: "image://theme/icon-m-framework-close-thumbnail"
+        MouseArea {
+            anchors.fill: parent
+            onClicked: closeButton.clicked()
         }
         onClicked: windowManager.closeWindow(model.object.window)
     }
