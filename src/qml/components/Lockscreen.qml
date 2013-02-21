@@ -3,7 +3,7 @@ import QtQuick 1.1
 Image {
     id: lockScreen
     source: "file://" + wallpaperSource.value
-    property bool animating: y != 0 && y != -height
+    property bool animating: y != parent.y && y != parent.y-height
     property bool heightIsChanging: false
 
     onHeightChanged: {
@@ -23,11 +23,11 @@ Image {
     }
 
     function hide() {
-        y = -height
+        y = parent.y-height
     }
 
     function show() {
-        y = 0
+        y = parent.y
     }
 
     // can't use a binding, as we also assign y based on mousearea below

@@ -24,7 +24,19 @@
 
 import QtQuick 1.1
 import QtMobility.sensors 1.2
+
+/**
+ * Dirty Hack Alarm!
+
+ * In order for lipstick's StatusBar to win over Harmattan Qt Components's
+ * StatusBar, we need to import com.nokia.meego first. If the order is
+ * wrong, you might see "StatusBar doesn't have an isPortrait property".
+ *
+ * Therefore: com.nokia.meego must be imported before org.nemomobile.lipstick
+ **/
+import com.nokia.meego 1.0
 import org.nemomobile.lipstick 0.1
+
 import org.nemomobile.configuration 1.0
 import org.nemomobile.time 1.0
 
@@ -32,28 +44,10 @@ import "./components"
 import "./pages"
 
 // The item representing the main screen; size is constant
-Item {
+PageStackWindow {
     id: mainScreen
-    width: LipstickSettings.screenSize.width
-    height: LipstickSettings.screenSize.height
 
-    // This is used for detecting the current device orientation and
-    // adjusting the desktop accordingly.
-    OrientationSensor {
-        id: orientationSensor
-        active: true
-
-        onReadingChanged: {
-            if (reading.orientation === OrientationReading.TopUp && !desktop.isPortrait) {
-                // The top of the device is upwards - meaning: portrait
-                desktop.isPortrait = true;
-            }
-            if (reading.orientation === OrientationReading.RightUp && desktop.isPortrait) {
-                // The right side of the device is upwards - meaning: landscape
-                desktop.isPortrait = false;
-            }
-        }
-    }
+    showStatusBar: !LipstickSettings.lockscreenVisible
 
     // This is used in the favorites page and in the lock screen
     WallClock {
@@ -62,81 +56,65 @@ Item {
         updateFrequency: WallClock.Minute
     }
 
-    // This is the "desktop" - the item whose size changes when the orientation changes
-    Item {
-        property bool isPortrait: LipstickSettings.getIsInPortrait()
+    // This is used in the lock screen
+    ConfigurationValue {
+        id: wallpaperSource
+        key: desktop.isPortrait ? "/desktop/meego/background/portrait/picture_filename" : "/desktop/meego/background/landscape/picture_filename"
+        defaultValue: "images/graphics-wallpaper-home.jpg"
+    }
 
-        id: desktop
-        anchors.top: parent.top
-        anchors.left: parent.left
-        width: isPortrait ? parent.height : parent.width
-        height: isPortrait ? parent.width : parent.height
-        transform: Rotation {
-            id: desktopRotation
-            origin.x: mainScreen.height / 2
-            origin.y: mainScreen.height / 2
-            angle: desktop.isPortrait ? -90 : 0
-            Behavior on angle { NumberAnimation { duration: 300; easing.type: Easing.OutCubic } }
-        }
+    initialPage: Page {
+        Item {
+            id: desktop
+            property bool isPortrait: width < height
 
-        // Black background for the status bar (until it's loaded)
-        Rectangle {
-            color: 'black'
-            anchors.fill: statusBar
-            z: 10
-        }
+            anchors.fill: parent
 
-        // System status bar
-        StatusBar {
-            id: statusBar
-            anchors {
-                top: parent.top
-                left: parent.left
-                right: parent.right
-            }
-            isPortrait: desktop.isPortrait
-            z: 10
-        }
+            // Pager for swiping between different pages of the home screen
+            Pager {
+                id: pager
+                anchors.fill: parent
 
-        // Pager for swiping between different pages of the home screen
-        Pager {
-            id: pager
-            anchors {
-                top: statusBar.bottom
-                left: parent.left
-                right: parent.right
-                bottom: parent.bottom
-            }
-            model: VisualItemModel {
-                Favorites {
-                    id: favorites
-                    width: pager.width
-                    height: pager.height
-                }
-                AppLauncher {
-                    id: launcher
-                    height: pager.height
-                }
-                AppSwitcher {
-                    id: switcher
-                    width: pager.width
-                    height: pager.height
-                    columnNumber: 2
+                model: VisualItemModel {
+                    Favorites {
+                        id: favorites
+                        width: pager.width
+                        height: pager.height
+                    }
+                    AppLauncher {
+                        id: launcher
+                        height: pager.height
+                    }
+                    AppSwitcher {
+                        id: switcher
+                        width: pager.width
+                        height: pager.height
+                        columnNumber: 2
+                    }
                 }
             }
-        }
 
-        // This is used in the lock screen
-        ConfigurationValue {
-            id: wallpaperSource
-            key: desktop.isPortrait ? "/desktop/meego/background/portrait/picture_filename" : "/desktop/meego/background/landscape/picture_filename"
-            defaultValue: "images/graphics-wallpaper-home.jpg"
-        }
+            /**
+             * Non-visual, needed to set _MEEGOTOUCH_ORIENTATION_ANGLE, because
+             * otherwise qt-components' setting of this XAtom conflicts with
+             * lipstick's handling of the status bar.
+             *
+             * This is org.nemomobile.lipstick.StatusBar (see above for details)
+             **/
+            StatusBar {
+                isPortrait: desktop.isPortrait
+            }
 
-        Lockscreen {
-            height: desktop.height
-            width: desktop.width
-            z: 200
+            Lockscreen {
+                width: parent.width
+                height: parent.height
+
+                z: 200
+            }
         }
+    }
+
+    Component.onCompleted: {
+        theme.inverted = true;
     }
 }
