@@ -91,6 +91,9 @@ PageStackWindow {
                         visibleInHome: x > -width && x < desktop.width
                     }
                 }
+
+                // Initial view should be the AppLauncher
+                currentIndex: 1
             }
 
             /**
