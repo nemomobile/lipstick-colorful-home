@@ -71,6 +71,10 @@ PageStackWindow {
             // Pager for swiping between different pages of the home screen
             Pager {
                 id: pager
+
+                scale: 0.8 + 0.2 * lockScreen.openingState
+                opacity: lockScreen.openingState
+
                 anchors.fill: parent
 
                 model: VisualItemModel {
@@ -108,6 +112,8 @@ PageStackWindow {
             }
 
             Lockscreen {
+                id: lockScreen
+
                 width: parent.width
                 height: parent.height
 
