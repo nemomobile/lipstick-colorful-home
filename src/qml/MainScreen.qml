@@ -98,71 +98,21 @@ Item {
             z: 10
         }
 
-        // Tab bar on the top for a quick way of selecting a page
-        TabBar {
-            id: tabBar
-            anchors {
-                top: statusBar.bottom
-                left: parent.left
-                right: parent.right
-            }
-            z: 10
-            model: ListModel {
-//                ListElement { iconUrl: ":/images/icons/star.png" }
-//                ListElement { iconUrl: ":/images/icons/cloud.png" }
-                ListElement { iconUrl: ":/images/icons/apps.png" }
-                ListElement { iconUrl: ":/images/icons/multitask.png" }
-//                ListElement { iconUrl: ":/images/icons/search.png" }
-            }
-
-            onCurrentIndexChanged: pager.currentIndex = tabBar.currentIndex
-        }
-
-        ConfigurationValue {
-            id: wallpaperSource
-            key: desktop.isPortrait ? "/desktop/meego/background/portrait/picture_filename" : "/desktop/meego/background/landscape/picture_filename"
-            defaultValue: "images/graphics-wallpaper-home.jpg"
-        }
-
-
-        // The background image
-        Image {
-            id: background
-            source: "file://" + wallpaperSource.value
-            fillMode: Image.Stretch
-            anchors.fill: pager
-
-            // Black overlay for making white text readable
-            Rectangle {
-                id: overlay
-                anchors.fill: parent
-                opacity: 0.55
-                color: 'black'
-            }
-        }
-
         // Pager for swiping between different pages of the home screen
         Pager {
             id: pager
             anchors {
-                top: tabBar.bottom
+                top: statusBar.bottom
                 left: parent.left
                 right: parent.right
                 bottom: parent.bottom
             }
             model: VisualItemModel {
-/*
                 Favorites {
                     id: favorites
                     width: pager.width
                     height: pager.height
                 }
-                Cloud {
-                    id: cloud
-                    width: pager.width
-                    height: pager.height
-                }
-*/
                 AppLauncher {
                     id: launcher
                     height: pager.height
@@ -173,15 +123,14 @@ Item {
                     height: pager.height
                     columnNumber: 2
                 }
-/*y
-                Search {
-                    id: search
-                    width: pager.width
-                    height: pager.height
-                }
-*/
             }
-            onCurrentIndexChanged: tabBar.currentIndex = pager.currentIndex
+        }
+
+        // This is used in the lock screen
+        ConfigurationValue {
+            id: wallpaperSource
+            key: desktop.isPortrait ? "/desktop/meego/background/portrait/picture_filename" : "/desktop/meego/background/landscape/picture_filename"
+            defaultValue: "images/graphics-wallpaper-home.jpg"
         }
 
         Lockscreen {
