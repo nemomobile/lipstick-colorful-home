@@ -26,6 +26,8 @@ import QtQuick 1.1
 import QtMobility.sensors 1.2
 import org.nemomobile.lipstick 0.1
 import org.nemomobile.configuration 1.0
+import org.nemomobile.time 1.0
+
 import "./components"
 import "./pages"
 
@@ -51,6 +53,13 @@ Item {
                 desktop.isPortrait = false;
             }
         }
+    }
+
+    // This is used in the favorites page and in the lock screen
+    WallClock {
+        id: wallClock
+        enabled: true /* XXX: Disable when display is off */
+        updateFrequency: WallClock.Minute
     }
 
     // This is the "desktop" - the item whose size changes when the orientation changes
