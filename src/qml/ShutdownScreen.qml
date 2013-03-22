@@ -7,30 +7,45 @@ Item {
     width: initialSize.width
     height: initialSize.height
 
-    Image {
+    Rectangle {
         property bool shouldBeVisible
-        id: shutdownImage
-        objectName: "shutdownImage"
-        width: shutdownWindow.height
-        height: shutdownWindow.width
-        transform: Rotation {
-            origin.x: shutdownWindow.height / 2
-            origin.y: shutdownWindow.height / 2
-            angle: -90
-        }
+        id: shutdownBackground
+        objectName: "shutdownBackground"
+        width: shutdownWindow.width
+        height: shutdownWindow.height
+        color: "white"
         opacity: shouldBeVisible ? 1 : 0
 
-        source: "image://theme/graphic-shutdown-480x854"
+        Image {
+            id: shutdownLogoImage
+            anchors.centerIn: parent
+            objectName: "shutdownLogoImage"
+
+            source: "image://theme/graphic-shutdown-logo"
+        }
+
+        Image {
+            id: shutdownDisclaimerImage
+            anchors {
+                bottom: parent.bottom
+                right: parent.right
+                bottomMargin: UiConstants.DefaultMargin
+                rightMargin: UiConstants.DefaultMargin
+            }
+            objectName: "shutdownDisclaimerImage"
+
+            source: "image://theme/graphic-shutdown-disclaimer"
+        }
 
         Connections {
             target: shutdownScreen
-            onWindowVisibleChanged: if (shutdownScreen.windowVisible) { shutdownImage.shouldBeVisible = true }
+            onWindowVisibleChanged: if (shutdownScreen.windowVisible) { shutdownBackground.shouldBeVisible = true }
         }
 
         Behavior on opacity {
             NumberAnimation {
                 duration: 1000
-                onRunningChanged: if (!running && shutdownImage.opacity == 0) shutdownScreen.windowVisible = false
+                onRunningChanged: if (!running && shutdownBackground.opacity == 0) shutdownScreen.windowVisible = false
             }
         }
     }
