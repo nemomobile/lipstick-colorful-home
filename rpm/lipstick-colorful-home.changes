@@ -1,0 +1,74 @@
+* Wed Mar 13 2013 Marko Saukko <marko.saukko@jollamobile.com> - 0.1.2
+- Add dependency to libdeclarative-sensors
+
+* Fri Feb 22 2013 Robin Burchell <robin+mer@viroteck.net> - 0.1.2
+- Animate homescreen rotation (from Thomas Perl)
+- Use a four column layout on the launcher (from Thomas Perl)
+- Use the WallClock elsewhere (from Thomas Perl)
+- Make the UI look more like Harmattan (from Thomas Perl)
+- Use Qt Components for orientation and status bar (from Thomas Perl)
+- Use the close icon from theme (from Thomas Perl)
+- Implement a close mode like Harmattan's (from Thomas Perl)
+- Always show status bar (from Thomas Perl)
+- Make application launcher the initial view on startup (from Thomas Perl)
+
+* Mon Feb 18 2013 Robin Burchell <robin+mer@viroteck.net> - 0.1.1
+- Fixes NEMO#521: Lock screen: Reset Y when height changes (from Thomas Perl)
+- Fixes NEMO#519: Lock screen: Add timer to update clock (from Thomas Perl)
+- Add some visual distinction to the clock on the lockscreen (from Thomas Perl)
+
+* Sun Feb 03 2013 Vesa Halttunen <vesa.halttunen@jollamobile.com> - 0.0.14
+- Shutdown screen (from Vesa)
+
+* Fri Feb 01 2013 Vesa Halttunen <vesa.halttunen@jollamobile.com> - 0.0.13
+- Notifications and volume bar follow the orientation of the topmost application (from Vesa)
+- USB mode selection UI (from Vesa)
+
+* Fri Jan 4 2013 Robin Burchell <robin+mer@viroteck.net> - 0.0.12
+- UI for setting the call/media volume using the volume keys (from Vesa)
+- Trigger the default action related to a notification when tapping on a notification (from Vesa)
+
+* Thu Nov 08 2012 Vesa Halttunen <vesa.halttunen@jollamobile.com> - 0.0.10
+- Fixes NEMO#548: Homescreen needs support for showing new-style notifications
+
+* Wed Oct 31 2012 Robin Burchell <robin+mer@viroteck.net> - 0.0.9
+- Ensure systemd service restarts (from Robin)
+- Remove unnecessary outer Flickable (from Robin)
+- Remove wrapper Item from Pager (from Robin)
+- Use mthemedaemon to do icon resolution for us (from Robin)
+
+* Mon Oct 15 2012 Robin Burchell <robin+mer@viroteck.net> - 0.0.8
+- Fix requirement that somehow vanished.
+
+* Mon Oct 15 2012 Marko Saukko <marko.saukko@jollamobile.com> - 0.0.8
+- Fix binary name in .desktop and .service files.
+
+* Sat Oct 13 2012 Robin Burchell <robin+mer@viroteck.net> - 0.0.8
+- Rename binary for easier testing (from Robin)
+- Pull in desktop wallpaper from the theme instead of hardcoding it (from Robin)
+- Use configured wallpaper on the lockscreen too (from Robin)
+- Round window corners for better asthetics (from Robin)
+- Use smooth scaling for window thumbnails for better asthetics (from Robin)
+- Fix some bugs with lockscreen animation (from Robin)
+
+* Fri Oct 12 2012 Robin Burchell <robin+mer@viroteck.net> - 0.0.7
+- Fix LauncherItem animating when first created (from John Brooks)
+- Use a SequentialAnimation in LauncherItem (from John Brooks)
+- Disable graphicssystem setting (from Robin)
+
+* Sun Sep 30 2012 Carsten Munk <carsten.munk@jollamobile.com> - 0.0.6
+- Add systemd user session .service file
+
+* Thu Aug 30 2012 Robin Burchell <robin+mer@viroteck.net> - 0.0.6
+- Fix a lockscreen bug introduced in v0.0.5, where it would vanish
+  when the finger was lifted off screen instead of animating away.
+
+* Tue Aug 28 2012 Marko Saukko <marko.saukko@jollamobile.com> - 0.0.5
+- Update to version 0.0.5
+- Fixes NEMO#357: AppLauncher: give indication of app launching
+- Fixes NEMO#413: lipstick-colorful-home shows only black screen on x86
+
+* Thu Aug 23 2012 Robin Burchell <robin+mer@viroteck.net> - 0.0.3
+- Initial release for Nemo, thanks to Timur Kristof
+- Fixes NEMO#350: Status bar doesn't block presses on items underneath it
+- Partially fixes NEMO#338: LauncherItem icon lookups are really really slow, especially when the icon is not found

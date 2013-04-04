@@ -1,0 +1,38 @@
+Name: lipstick-colorful-home
+Summary: A nice homescreen
+Version: 0.1.2
+Release: 1
+Group: System/GUI/Other
+License: BSD
+URL: https://github.com/nemomobile/lipstick-colorful-home
+Sources:
+    - "%{name}-%{version}.tar.bz2"
+    - lipstick.desktop
+Provides:
+    - meegotouch-home > 1.3.2
+    - meegotouch-systemui-screenlock-padlock > 1.3.2
+    - meegotouch-systemui-volume-fullscreen > 1.5.1
+Obsoletes:
+    - meegotouch-home <= 1.3.2
+    - meegotouch-systemui-screenlock-padlock <= 1.3.2
+    - meegotouch-systemui-volume-fullscreen <= 1.5.1
+Description: A homescreen for Nemo Mobile
+Builder: qmake
+Requires:
+    - lipstick >= 0.6.1
+    - nemo-qml-plugins-configuration
+    - nemo-qml-plugins-time
+    - libdeclarative-sensors
+PkgConfigBR:
+    - QtCore
+    - QtDeclarative
+    - QtOpenGL # TODO: remove
+    - lipstick
+ExtraSources:
+  - lipstick.service;%{_libdir}/systemd/user/
+Conflicts:
+  - lipstick-example-home
+Files:
+    - "%{_bindir}/lipstick"
+    - "%{_libdir}/systemd/user/lipstick.service"
+    - "%config /etc/xdg/autostart/*.desktop"
