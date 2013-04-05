@@ -24,7 +24,6 @@ Requires:   nemo-qml-plugins-time
 Requires:   qt-components
 BuildRequires:  pkgconfig(QtCore)
 BuildRequires:  pkgconfig(QtDeclarative)
-BuildRequires:  pkgconfig(QtOpenGL)
 BuildRequires:  pkgconfig(lipstick)
 Provides:   meegotouch-home > 1.3.2
 Provides:   meegotouch-systemui-screenlock-padlock > 1.3.2

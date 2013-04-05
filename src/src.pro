@@ -9,7 +9,7 @@ INSTALLS = target
 target.path = /usr/bin
 
 CONFIG += qt link_pkgconfig
-QT += network svg dbus xml declarative opengl
+QT += network svg dbus xml declarative
 
 HEADERS +=
 

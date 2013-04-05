@@ -26,7 +26,6 @@ Requires:
 PkgConfigBR:
     - QtCore
     - QtDeclarative
-    - QtOpenGL # TODO: remove
     - lipstick
 ExtraSources:
   - lipstick.service;%{_libdir}/systemd/user/
