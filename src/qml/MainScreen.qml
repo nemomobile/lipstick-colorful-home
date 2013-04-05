@@ -23,7 +23,6 @@
 // Copyright (c) 2012, Timur Kristóf <venemo@fedoraproject.org>
 
 import QtQuick 1.1
-import QtMobility.sensors 1.2
 
 import org.nemomobile.lipstick 0.1
 import org.nemomobile.configuration 1.0

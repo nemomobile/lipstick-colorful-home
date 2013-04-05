@@ -21,7 +21,6 @@ Source100:  lipstick-colorful-home.yaml
 Requires:   lipstick >= 0.6.1
 Requires:   nemo-qml-plugins-configuration
 Requires:   nemo-qml-plugins-time
-Requires:   libdeclarative-sensors
 BuildRequires:  pkgconfig(QtCore)
 BuildRequires:  pkgconfig(QtDeclarative)
 BuildRequires:  pkgconfig(QtOpenGL)
