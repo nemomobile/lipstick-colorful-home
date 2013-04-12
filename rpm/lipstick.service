@@ -4,6 +4,7 @@ After=xorg.target
 Requires=dbus.socket xorg.target mcompositor.service mthemedaemon.service meegotouch-systemui.service
 
 [Service]
-ExecStart=/usr/bin/lipstick
+Type=notify
+ExecStart=/usr/bin/lipstick --systemd
 Restart=always
 

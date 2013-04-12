@@ -24,8 +24,15 @@
 #include <homeapplication.h>
 #include <QDebug>
 
+#include <systemd/sd-daemon.h>
+
 int main(int argc, char **argv)
 {
     HomeApplication app(argc, argv, "qrc:/qml/MainScreen.qml");
+
+    // Let systemd know that we are initialized
+    if (app.arguments().indexOf("--systemd") >= 0)
+        sd_notify(0, "READY=1");
+
     return app.exec();
 }

@@ -25,6 +25,7 @@ Requires:   qt-components
 BuildRequires:  pkgconfig(QtCore)
 BuildRequires:  pkgconfig(QtDeclarative)
 BuildRequires:  pkgconfig(lipstick)
+BuildRequires:  pkgconfig(systemd)
 Provides:   meegotouch-home > 1.3.2
 Provides:   meegotouch-systemui-screenlock-padlock > 1.3.2
 Provides:   meegotouch-systemui-volume-fullscreen > 1.5.1

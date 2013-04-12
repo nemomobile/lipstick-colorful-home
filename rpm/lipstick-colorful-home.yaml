@@ -27,6 +27,7 @@ PkgConfigBR:
     - QtCore
     - QtDeclarative
     - lipstick
+    - systemd
 ExtraSources:
   - lipstick.service;%{_libdir}/systemd/user/
 Conflicts:

@@ -20,7 +20,7 @@ RESOURCES += \
     resources-qml.qrc \
     resources-images.qrc
 
-PKGCONFIG += lipstick
+PKGCONFIG += lipstick libsystemd-daemon
 
 OTHER_FILES += \
     qml/pages/AppLauncher.qml \
