@@ -42,6 +42,7 @@ MouseArea {
         smooth: true
         radius: 5
         opacity: switcherRoot.closeMode ? .6 : 1
+        Behavior on opacity { NumberAnimation { duration: 300; easing.type: Easing.OutBack } }
     }
 
     onClicked: {
