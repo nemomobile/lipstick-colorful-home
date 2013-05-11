@@ -132,6 +132,7 @@ Item {
             }
             text: 'Close all'
             onClicked: {
+                // TODO: use close animation inside item
                 for (var i=switcherModel.itemCount-1; i>=0; i--) {
                     windowManager.closeWindow(switcherModel.get(i).window);
                 }
