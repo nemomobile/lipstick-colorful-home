@@ -26,38 +26,32 @@ import QtQuick 1.1
 import org.nemomobile.lipstick 0.1
 import "."
 
-Item {
+MouseArea {
     id: switcherItemRoot
 
-    Item {
-        anchors.fill: parent
+    SwitcherPixmapItem {
+        id: windowPixmap
+        width: desktop.isPortrait ? parent.height : parent.width
+        height: desktop.isPortrait ? parent.width : parent.height
+        windowId: model.object.window
+        transform: Rotation {
+            angle: desktop.isPortrait ? 90 : 0
+            origin.x: windowPixmap.height / 2
+            origin.y: windowPixmap.height / 2
+        }
+        smooth: true
+        radius: 5
+        opacity: switcherRoot.closeMode ? .6 : 1
+    }
 
-        SwitcherPixmapItem {
-            id: windowPixmap
-            width: desktop.isPortrait ? parent.height : parent.width
-            height: desktop.isPortrait ? parent.width : parent.height
-            windowId: model.object.window
-            transform: Rotation {
-                angle: desktop.isPortrait ? 90 : 0
-                origin.x: windowPixmap.height / 2
-                origin.y: windowPixmap.height / 2
-            }
-            smooth: true
-            radius: 5
-            opacity: switcherRoot.closeMode ? .6 : 1
+    onClicked: {
+        if (!switcherRoot.closeMode) {
+            windowManager.windowToFront(model.object.window);
         }
     }
 
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            if (!switcherRoot.closeMode) {
-                windowManager.windowToFront(model.object.window);
-            }
-        }
-        onPressAndHold: {
-            switcherRoot.closeMode = true;
-        }
+    onPressAndHold: {
+        switcherRoot.closeMode = true;
     }
 
     CloseButton {
