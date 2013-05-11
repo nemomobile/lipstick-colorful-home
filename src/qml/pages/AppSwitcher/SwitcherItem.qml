@@ -54,17 +54,44 @@ MouseArea {
         switcherRoot.closeMode = true;
     }
 
+    // simple move animation
+    Behavior on x { NumberAnimation { } }
+    Behavior on y { NumberAnimation { } }
+
+    SequentialAnimation {
+        id: closeAnimation
+        ParallelAnimation {
+            NumberAnimation {
+                target: switcherItemRoot
+                property: "scale"
+                duration: 200
+                to: 0.0
+            }
+
+            NumberAnimation {
+                target: switcherItemRoot
+                property: "opacity"
+                duration: 150
+                to: 0.0
+            }
+        }
+        ScriptAction {
+            script: windowManager.closeWindow(model.object.window)
+        }
+    }
+
     CloseButton {
         id: closeButton
         Behavior on scale { PropertyAnimation { duration: 300; easing.type: Easing.OutBack } }
         scale: switcherRoot.closeMode ? 1 : 0
         opacity: scale
+        enabled: !closeAnimation.running
         anchors {
             top: parent.top
             right: parent.right
             topMargin: -10
             rightMargin: -10
         }
-        onClicked: windowManager.closeWindow(model.object.window)
+        onClicked: closeAnimation.start()
     }
 }
