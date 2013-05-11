@@ -24,7 +24,7 @@
 
 import QtQuick 1.1
 import org.nemomobile.lipstick 0.1
-import com.nokia.meego 1.0
+import com.nokia.meego 1.2
 import "./AppSwitcher"
 
 // App Switcher page
@@ -133,17 +133,14 @@ Item {
     }
 
     // Empty switcher indicator
-    Text {
-        anchors.centerIn: parent
-        visible: switcherModel.itemCount === 0
-        onVisibleChanged: {
+    ViewPlaceholder {
+        enabled: switcherModel.itemCount === 0
+        onEnabledChanged: {
             /* When the last window is closed, exit close mode */
             if (visible) {
                 switcherRoot.closeMode = false;
             }
         }
         text: "No apps open"
-        color: "white"
-        font.pixelSize: 30
     }
 }
