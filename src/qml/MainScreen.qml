@@ -81,7 +81,6 @@ PageStackWindow {
                         id: switcher
                         width: pager.width
                         height: pager.height
-                        columnNumber: 2
                         visibleInHome: x > -width && x < desktop.width
                     }
                 }

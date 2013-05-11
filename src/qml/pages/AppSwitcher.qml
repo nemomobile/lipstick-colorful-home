@@ -31,13 +31,9 @@ import "./AppSwitcher"
 // The place for browsing already running apps
 
 Item {
-    property int columnNumber: 3
-    property int gridMargin: 20
+    id: switcherRoot
     property bool closeMode: false
     property bool visibleInHome: false
-
-    id: switcherRoot
-    clip: true
 
     onVisibleInHomeChanged: {
         // Exit close mode when scrolling out of view
@@ -46,32 +42,43 @@ Item {
         }
     }
 
-    // The actual app switcher grid
-    GridView {
-        id: gridview
-        width: cellWidth * columnNumber
-        cellWidth: (parent.width - gridMargin * 2) / columnNumber + gridMargin / 2
-        cellHeight: (cellWidth - gridMargin / 2) * (desktop.height / desktop.width) + gridMargin / 2
+    Flickable {
+        id: flickable
+        contentHeight: gridview.height
+        width: parent.width - UiConstants.DefaultMargin // see comment re right anchor below
+
         anchors {
             top: parent.top
-            bottom: switcherRoot.closeMode ? toolBar.top : parent.bottom
-            horizontalCenter: parent.horizontalCenter
-            topMargin: 35
-            bottomMargin: 35
+            bottom: toolBar.top
+            left: parent.left
+            // no right anchor to avoid double margin (complicated math)
+            margins: UiConstants.DefaultMargin
         }
 
-        model: SwitcherModel {
-            id:switcherModel
-        }
+        Grid {
+            id: gridview
+            columns: 2
+            spacing: UiConstants.DefaultMargin
+            move: Transition {
+                NumberAnimation {
+                    properties: "x,y"
+                }
+            }
 
-        delegate: Item {
-            width: gridview.cellWidth
-            height: gridview.cellHeight
+            Repeater {
+                model: SwitcherModel {
+                    id:switcherModel
+                }
 
-            SwitcherItem {
-                width: parent.width - gridMargin
-                height: parent.height - gridMargin
-                anchors.centerIn: parent
+                delegate: Item {
+                    width: (flickable.width - (gridview.spacing * gridview.columns)) / gridview.columns
+                    height: width * (desktop.height / desktop.width)
+
+                    SwitcherItem {
+                        width: parent.width
+                        height: parent.height
+                    }
+                }
             }
         }
     }

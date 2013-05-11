@@ -54,10 +54,6 @@ MouseArea {
         switcherRoot.closeMode = true;
     }
 
-    // simple move animation
-    Behavior on x { NumberAnimation { } }
-    Behavior on y { NumberAnimation { } }
-
     SequentialAnimation {
         id: closeAnimation
         ParallelAnimation {
