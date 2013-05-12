@@ -26,6 +26,7 @@ import QtQuick 1.1
 import com.nokia.meego 1.2
 
 MouseArea {
+    id: launcherItem
     property alias source: iconImage.source
     property alias iconCaption: iconText.text
 
@@ -40,7 +41,7 @@ MouseArea {
         width: 80
         height: width
         asynchronous: true
-        opacity: model.object.isLaunching ? 0.6 : 1.0
+        opacity: model.object.isLaunching || launcherItem.pressed ? 0.6 : 1.0
         onStatusChanged: {
             if (status === Image.Error) {
                 console.log("Error loading an app icon, falling back to default.");
