@@ -23,6 +23,7 @@
 // Copyright (c) 2012, Timur Kristóf <venemo@fedoraproject.org>
 
 import QtQuick 1.1
+import com.nokia.meego 1.2
 
 MouseArea {
     property alias source: iconImage.source
@@ -39,6 +40,7 @@ MouseArea {
         width: 80
         height: width
         asynchronous: true
+        opacity: model.object.isLaunching ? 0.6 : 1.0
         onStatusChanged: {
             if (status === Image.Error) {
                 console.log("Error loading an app icon, falling back to default.");
@@ -46,24 +48,12 @@ MouseArea {
             }
         }
 
-        SequentialAnimation {
-            id: launchAnimation
+        BusyIndicator {
+            anchors.centerIn: parent
+            opacity: model.object.isLaunching ? 1.0 : 0.0
             running: model.object.isLaunching
-            loops: Animation.Infinite
-            alwaysRunToEnd: true
-
-            NumberAnimation {
-                target: iconImage
-                property: "scale"
-                to: 0.6
-                duration: 700
-            }
-
-            NumberAnimation {
-                target: iconImage
-                property: "scale"
-                to: 1
-                duration: 700
+            platformStyle: BusyIndicatorStyle {
+                size: "large"
             }
         }
     }
