@@ -84,15 +84,13 @@ Item {
     }
 
     Rectangle {
+        id: toolBar
         color: 'black'
         border {
             width: 1
             color: '#333333'
         }
 
-        visible: switcherRoot.closeMode
-
-        id: toolBar
         height: toolBarDone.height + 2*padding
         property int padding: 9
 
