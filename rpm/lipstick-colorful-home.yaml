@@ -20,8 +20,8 @@ Description: A homescreen for Nemo Mobile
 Builder: qmake
 Requires:
     - lipstick >= 0.6.1
-    - nemo-qml-plugins-configuration
-    - nemo-qml-plugins-time
+    - nemo-qml-plugin-configuration
+    - nemo-qml-plugin-time
     - qt-components
 PkgConfigBR:
     - QtCore
