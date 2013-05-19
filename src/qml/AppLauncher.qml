@@ -35,7 +35,6 @@ GridView {
     cellHeight: cellWidth + 30
     width: Math.floor(parent.width / cellWidth) * cellWidth
     cacheBuffer: gridview.contentHeight
-    x: (parent.width - width) / 2 // can't use an anchor because we need to animate our position
 
     // just for margin purposes
     header: Item {
