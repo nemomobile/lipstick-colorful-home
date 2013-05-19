@@ -31,7 +31,7 @@ import com.nokia.meego 1.2
 
 GridView {
     id: gridview
-    cellWidth: 80 + 25
+    cellWidth: 115
     cellHeight: cellWidth + 30
     width: Math.floor(parent.width / cellWidth) * cellWidth
     cacheBuffer: gridview.contentHeight
