@@ -24,21 +24,16 @@
 
 import QtQuick 1.1
 
-// Favorites page:
-// the place for user-customizable content such as
-// widgets, notifications, favorite apps, etc.
+// Feeds page:
+// the place for an event feed.
 
 Item {
-    id: favorites
-    property color primaryColor: 'white'
-    property color secondaryColor: '#888888'
-
     // Day of week
     Text {
         id: displayDayOfWeek
         text: Qt.formatDateTime(wallClock.time, "dddd")
         font.pixelSize: 40
-        color: favorites.primaryColor
+        color: "white"
         anchors {
             top: parent.top
             left: parent.left
@@ -52,7 +47,7 @@ Item {
         id: displayCurrentDate
         text: Qt.formatDate(wallClock.time, Qt.SystemLocaleShortDate)
         font.pixelSize: 25
-        color: favorites.secondaryColor
+        color: "#888888"
         anchors {
             top: displayDayOfWeek.bottom
             left: parent.left
@@ -64,7 +59,7 @@ Item {
     // Separator thingy
     Rectangle {
         height: 2
-        color: favorites.secondaryColor
+        color: "#888888"
         anchors {
             top: displayCurrentDate.bottom
             left: parent.left

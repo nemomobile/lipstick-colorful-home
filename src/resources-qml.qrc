@@ -10,9 +10,7 @@
         <file>qml/MainScreen.qml</file>
         <file>qml/CloseButton.qml</file>
         <file>qml/LauncherItemDelegate.qml</file>
-        <file>qml/Search.qml</file>
-        <file>qml/Cloud.qml</file>
-        <file>qml/Favorites.qml</file>
+        <file>qml/FeedsPage.qml</file>
         <file>qml/NotificationPreview.qml</file>
         <file>qml/VolumeControl.qml</file>
         <file>qml/USBModeSelector.qml</file>

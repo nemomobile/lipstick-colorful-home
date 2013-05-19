@@ -65,8 +65,7 @@ PageStackWindow {
                 anchors.fill: parent
 
                 model: VisualItemModel {
-                    Favorites {
-                        id: favorites
+                    FeedsPage {
                         width: pager.width
                         height: pager.height
                     }
