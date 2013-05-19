@@ -30,9 +30,6 @@ import org.nemomobile.time 1.0
 
 import com.nokia.meego 1.0
 
-import "./components"
-import "./pages"
-
 // The item representing the main screen; size is constant
 PageStackWindow {
     id: mainScreen

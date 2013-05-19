@@ -1,18 +1,18 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/components/Pager.qml</file>
-        <file>qml/components/TabBar.qml</file>
-        <file>qml/components/Lockscreen.qml</file>
-        <file>qml/components/LockscreenClock.qml</file>
-        <file>qml/pages/AppLauncher.qml</file>
-        <file>qml/pages/AppSwitcher.qml</file>
-        <file>qml/pages/AppSwitcher/SwitcherItem.qml</file>
+        <file>qml/Pager.qml</file>
+        <file>qml/TabBar.qml</file>
+        <file>qml/Lockscreen.qml</file>
+        <file>qml/LockscreenClock.qml</file>
+        <file>qml/AppLauncher.qml</file>
+        <file>qml/AppSwitcher.qml</file>
+        <file>qml/SwitcherItem.qml</file>
         <file>qml/MainScreen.qml</file>
-        <file>qml/pages/AppSwitcher/CloseButton.qml</file>
-        <file>qml/pages/AppLauncher/LauncherItem.qml</file>
-        <file>qml/pages/Search.qml</file>
-        <file>qml/pages/Cloud.qml</file>
-        <file>qml/pages/Favorites.qml</file>
+        <file>qml/CloseButton.qml</file>
+        <file>qml/LauncherItemDelegate.qml</file>
+        <file>qml/Search.qml</file>
+        <file>qml/Cloud.qml</file>
+        <file>qml/Favorites.qml</file>
         <file>qml/NotificationPreview.qml</file>
         <file>qml/VolumeControl.qml</file>
         <file>qml/USBModeSelector.qml</file>

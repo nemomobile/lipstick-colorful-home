@@ -25,7 +25,6 @@
 import QtQuick 1.1
 import org.nemomobile.lipstick 0.1
 import com.nokia.meego 1.2
-import "./AppSwitcher"
 
 // App Switcher page
 // The place for browsing already running apps

@@ -25,7 +25,6 @@
 import QtQuick 1.1
 import org.nemomobile.lipstick 0.1
 import com.nokia.meego 1.2
-import "./AppLauncher"
 
 // App Launcher page
 // the place for browsing installed applications and launching them
@@ -49,7 +48,7 @@ GridView {
 
     model: LauncherModel { }
 
-    delegate: LauncherItem {
+    delegate: LauncherItemDelegate {
         id: launcherItem
         width: gridview.cellWidth
         height: gridview.cellHeight

@@ -24,7 +24,6 @@
 
 import QtQuick 1.1
 import org.nemomobile.lipstick 0.1
-import "."
 
 MouseArea {
     id: switcherItemRoot

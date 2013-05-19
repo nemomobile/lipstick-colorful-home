@@ -22,20 +22,4 @@ RESOURCES += \
 
 PKGCONFIG += lipstick libsystemd-daemon
 
-OTHER_FILES += \
-    qml/pages/AppLauncher.qml \
-    qml/pages/AppSwitcher.qml \
-    qml/pages/AppSwitcher/SwitcherItem.qml \
-    qml/components/Pager.qml \
-    qml/components/TabBar.qml \
-    qml/MainScreen.qml \
-    qml/components/Lockscreen.qml \
-    qml/pages/AppSwitcher/CloseButton.qml \
-    qml/pages/AppLauncher/LauncherItem.qml \
-    qml/pages/Search.qml \
-    qml/pages/Cloud.qml \
-    qml/pages/Favorites.qml \
-    qml/NotificationPreview.qml \
-    qml/VolumeControl.qml \
-    qml/USBModeSelector.qml \
-    qml/ShutdownScreen.qml
+OTHER_FILES += qml/*.qml
