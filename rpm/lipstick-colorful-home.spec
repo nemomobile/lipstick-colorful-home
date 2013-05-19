@@ -72,5 +72,6 @@ install -D -m 644 %{SOURCE1} %{buildroot}/etc/xdg/autostart/lipstick.desktop
 %{_bindir}/lipstick
 %{_libdir}/systemd/user/lipstick.service
 %config /etc/xdg/autostart/*.desktop
+%{_datadir}/lipstick/lipstick.conf
 # >> files
 # << files

@@ -23,3 +23,8 @@ RESOURCES += \
 PKGCONFIG += lipstick libsystemd-daemon
 
 OTHER_FILES += qml/*.qml
+
+config.files = lipstick.conf
+config.path = /usr/share/lipstick
+INSTALLS += config
+
