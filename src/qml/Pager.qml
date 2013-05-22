@@ -21,7 +21,7 @@
 //
 // Copyright (c) 2012, Timur Kristóf <venemo@fedoraproject.org>
 
-import QtQuick 1.1
+import QtQuick 1.2
 
 PathView {
     id: view
@@ -30,6 +30,7 @@ PathView {
     preferredHighlightEnd: 0.5
     flickDeceleration: 10000
     highlightMoveDuration: 100
+    snapMode: PathView.SnapOneItem
     clip: true
     path: Path {
         startX: - width * model.count / 2 + width / 2
