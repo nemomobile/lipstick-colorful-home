@@ -5,6 +5,7 @@ Image {
     source: "file://" + wallpaperSource.value
     property bool animating: y != parent.y && y != parent.y-height
     property bool heightIsChanging: false
+    visible: openingState < 1
 
     /**
      * openingState should be a value between 0 and 1, where 0 means
