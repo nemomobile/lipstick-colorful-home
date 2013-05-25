@@ -46,6 +46,16 @@ Item {
         contentHeight: gridview.height
         width: parent.width - UiConstants.DefaultMargin // see comment re right anchor below
 
+        MouseArea {
+            height: flickable.contentHeight > flickable.height ? flickable.contentHeight : flickable.height
+            width: flickable.width
+            onPressAndHold: closeMode = !closeMode
+            onClicked: {
+                if (closeMode)
+                    closeMode = false
+            }
+        }
+
         anchors {
             top: parent.top
             bottom: toolBar.top
