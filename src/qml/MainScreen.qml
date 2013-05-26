@@ -59,7 +59,7 @@ PageStackWindow {
             Pager {
                 id: pager
 
-                scale: 0.8 + 0.2 * lockScreen.openingState
+                scale: 0.7 + 0.3 * lockScreen.openingState
                 opacity: lockScreen.openingState
 
                 anchors.fill: parent
