@@ -1,10 +1,15 @@
-import QtQuick 1.1
+import QtQuick 2.0
 
 Image {
     id: lockScreen
     source: "file://" + wallpaperSource.value
     property bool animating: y != parent.y && y != parent.y-height
     property bool heightIsChanging: false
+
+    Rectangle {
+        color: "red"
+        anchors.fill: parent
+    }
 
     /**
      * openingState should be a value between 0 and 1, where 0 means

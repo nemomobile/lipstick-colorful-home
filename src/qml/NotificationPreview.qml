@@ -22,8 +22,8 @@
 // Copyright (C) 2012 Jolla Ltd.
 // Contact: Vesa Halttunen <vesa.halttunen@jollamobile.com>
 
-import QtQuick 1.1
-import org.freedesktop.contextkit 1.0
+import QtQuick 2.0
+//import org.freedesktop.contextkit 1.0
 import org.nemomobile.lipstick 0.1
 
 Item {
@@ -34,9 +34,17 @@ Item {
     width: initialSize.width
     height: initialSize.height
 
+/*
+ TODO
     ContextProperty {
         id: orientationAngleContextProperty
         key: "/Screen/CurrentWindow/OrientationAngle"
+    }
+*/
+
+    QtObject {
+        id: orientationAngleContextProperty
+        property int value: 0
     }
 
     MouseArea {

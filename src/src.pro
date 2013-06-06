@@ -9,7 +9,7 @@ INSTALLS = target
 target.path = /usr/bin
 
 CONFIG += qt link_pkgconfig
-QT += network svg dbus xml declarative
+QT += network dbus xml quick
 
 HEADERS +=
 
@@ -20,7 +20,7 @@ RESOURCES += \
     resources-qml.qrc \
     resources-images.qrc
 
-PKGCONFIG += lipstick libsystemd-daemon
+PKGCONFIG += lipstick-qt5 libsystemd-daemon
 
 OTHER_FILES += qml/*.qml
 

@@ -22,7 +22,7 @@
 // Copyright (c) 2011, Tom Swindell <t.swindell@rubyx.co.uk>
 // Copyright (c) 2012, Timur Kristóf <venemo@fedoraproject.org>
 
-import QtQuick 1.1
+import QtQuick 2.0
 
 // Feeds page:
 // the place for an event feed.

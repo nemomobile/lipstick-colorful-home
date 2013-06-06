@@ -22,9 +22,9 @@
 // Copyright (c) 2011, Tom Swindell <t.swindell@rubyx.co.uk>
 // Copyright (c) 2012, Timur Kristóf <venemo@fedoraproject.org>
 
-import QtQuick 1.1
+import QtQuick 2.0
 import org.nemomobile.lipstick 0.1
-import com.nokia.meego 1.2
+import com.nokia.meego 2.0
 
 // App Switcher page
 // The place for browsing already running apps

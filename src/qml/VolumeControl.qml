@@ -1,7 +1,7 @@
-import QtQuick 1.1
+import QtQuick 2.0
 import org.nemomobile.lipstick 0.1
-import org.freedesktop.contextkit 1.0
-import com.nokia.meego 1.0
+//import org.freedesktop.contextkit 1.0
+import com.nokia.meego 2.0
 
 Item {
     id: volumeWindow
@@ -11,10 +11,18 @@ Item {
     width: initialSize.width
     height: initialSize.height
 
+/*
+ TODO
     ContextProperty {
         id: orientationAngleContextProperty
         key: "/Screen/CurrentWindow/OrientationAngle"
     }
+*/
+    QtObject {
+        id: orientationAngleContextProperty
+        property int value: 0
+    }
+
 
     Item {
         anchors.centerIn: parent

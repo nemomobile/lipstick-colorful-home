@@ -1,6 +1,6 @@
-import QtQuick 1.1
+import QtQuick 2.0
 import org.nemomobile.lipstick 0.1
-import com.nokia.meego 1.0
+import com.nokia.meego 2.0
 
 Item {
     id: shutdownWindow

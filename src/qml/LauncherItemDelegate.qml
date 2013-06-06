@@ -22,8 +22,8 @@
 // Copyright (c) 2011, Tom Swindell <t.swindell@rubyx.co.uk>
 // Copyright (c) 2012, Timur Kristóf <venemo@fedoraproject.org>
 
-import QtQuick 1.1
-import com.nokia.meego 1.2
+import QtQuick 2.0
+import com.nokia.meego 2.0
 
 MouseArea {
     id: launcherItem

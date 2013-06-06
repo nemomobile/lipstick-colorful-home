@@ -22,13 +22,13 @@
 // Copyright (c) 2011, Tom Swindell <t.swindell@rubyx.co.uk>
 // Copyright (c) 2012, Timur Kristóf <venemo@fedoraproject.org>
 
-import QtQuick 1.1
+import QtQuick 2.0
 
 import org.nemomobile.lipstick 0.1
 import org.nemomobile.configuration 1.0
 import org.nemomobile.time 1.0
 
-import com.nokia.meego 1.0
+import com.nokia.meego 2.0
 
 // The item representing the main screen; size is constant
 PageStackWindow {
@@ -49,6 +49,36 @@ PageStackWindow {
     }
 
     initialPage: Page {
+
+            Pager {
+                id: pager
+
+                scale: 0.8 + 0.2 * lockScreen.openingState
+                opacity: lockScreen.openingState
+
+                anchors.fill: parent
+
+                model: VisualItemModel {
+                    FeedsPage {
+                        width: pager.width
+                        height: pager.height
+                    }
+                    AppLauncher {
+                        id: launcher
+                        height: pager.height
+                    }
+                }
+            }
+            Lockscreen {
+                id: lockScreen
+
+                width: parent.width
+                height: parent.height
+
+                z: 200
+            }
+
+        /*
         Item {
             id: desktop
             property bool isPortrait: width < height
@@ -84,7 +114,6 @@ PageStackWindow {
                 // Initial view should be the AppLauncher
                 currentIndex: 1
             }
-
             Lockscreen {
                 id: lockScreen
 
@@ -94,6 +123,7 @@ PageStackWindow {
                 z: 200
             }
         }
+        */
     }
 
     Component.onCompleted: {

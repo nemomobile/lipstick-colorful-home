@@ -22,7 +22,7 @@
 // Copyright (c) 2011, Tom Swindell <t.swindell@rubyx.co.uk>
 // Copyright (c) 2012, Timur Kristóf <venemo@fedoraproject.org>
 
-import QtQuick 1.1
+import QtQuick 2.0
 import org.nemomobile.lipstick 0.1
 
 MouseArea {
@@ -46,7 +46,7 @@ MouseArea {
 
     onClicked: {
         if (!switcherRoot.closeMode) {
-            windowManager.windowToFront(model.object.window);
+            Lipstick.compositor.windowToFront(model.object.window);
         }
     }
 
