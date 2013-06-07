@@ -28,11 +28,11 @@ import org.nemomobile.lipstick 0.1
 MouseArea {
     id: switcherItemRoot
 
-    SwitcherPixmapItem {
+    WindowPixmapItem {
         id: windowPixmap
         width: desktop.isPortrait ? parent.height : parent.width
         height: desktop.isPortrait ? parent.width : parent.height
-        windowId: model.object.window
+        windowId: model.window
         transform: Rotation {
             angle: desktop.isPortrait ? 90 : 0
             origin.x: windowPixmap.height / 2
@@ -46,7 +46,7 @@ MouseArea {
 
     onClicked: {
         if (!switcherRoot.closeMode) {
-            Lipstick.compositor.windowToFront(model.object.window);
+            Lipstick.compositor.windowToFront(model.window);
         }
     }
 
