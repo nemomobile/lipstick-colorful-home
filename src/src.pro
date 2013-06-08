@@ -9,7 +9,7 @@ INSTALLS = target
 target.path = /usr/bin
 
 CONFIG += qt link_pkgconfig
-QT += network dbus xml quick
+QT += quick
 
 HEADERS +=
 
