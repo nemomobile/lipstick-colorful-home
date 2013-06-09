@@ -14,7 +14,7 @@ Requires:
     - lipstick-qt5 >= 0.12.7
     - nemo-qml-plugin-configuration-qt5
     - nemo-qml-plugin-time-qt5
-    - qt-components-qt5
+    - qt-components-qt5 >= 2.0.2
     - qt5-qtdeclarative-import-window2 # TODO: components dep?
 PkgConfigBR:
     - Qt5Core

@@ -24,17 +24,20 @@
 
 import QtQuick 2.0
 import org.nemomobile.lipstick 0.1
+import com.nokia.meego 2.0
 
 MouseArea {
     id: switcherItemRoot
 
+    property bool rotateWindowContent: (screen.frameBufferRotation === 90) ? desktop.isPortrait : !desktop.isPortrait
+
     WindowPixmapItem {
         id: windowPixmap
-        width: desktop.isPortrait ? parent.height : parent.width
-        height: desktop.isPortrait ? parent.width : parent.height
+        width: rotateWindowContent ? parent.height : parent.width
+        height: rotateWindowContent ? parent.width : parent.height
         windowId: model.window
         transform: Rotation {
-            angle: desktop.isPortrait ? 90 : 0
+            angle: rotateWindowContent ? 90 : 0
             origin.x: windowPixmap.height / 2
             origin.y: windowPixmap.height / 2
         }

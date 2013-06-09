@@ -21,7 +21,7 @@ Source100:  lipstick-colorful-home-qt5.yaml
 Requires:   lipstick-qt5 >= 0.12.7
 Requires:   nemo-qml-plugin-configuration-qt5
 Requires:   nemo-qml-plugin-time-qt5
-Requires:   qt-components-qt5
+Requires:   qt-components-qt5 >= 2.0.2
 Requires:   qt5-qtdeclarative-import-window2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Quick)
