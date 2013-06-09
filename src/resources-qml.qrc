@@ -15,5 +15,8 @@
         <file>qml/VolumeControl.qml</file>
         <file>qml/USBModeSelector.qml</file>
         <file>qml/ShutdownScreen.qml</file>
+        <file>qml/compositor.qml</file>
+        <file>qml/compositor/ScreenGestureArea.qml</file>
+        <file>qml/compositor/WindowWrapperBase.qml</file>
     </qresource>
 </RCC>

@@ -49,36 +49,6 @@ PageStackWindow {
     }
 
     initialPage: Page {
-
-            Pager {
-                id: pager
-
-                scale: 0.8 + 0.2 * lockScreen.openingState
-                opacity: lockScreen.openingState
-
-                anchors.fill: parent
-
-                model: VisualItemModel {
-                    FeedsPage {
-                        width: pager.width
-                        height: pager.height
-                    }
-                    AppLauncher {
-                        id: launcher
-                        height: pager.height
-                    }
-                }
-            }
-            Lockscreen {
-                id: lockScreen
-
-                width: parent.width
-                height: parent.height
-
-                z: 200
-            }
-
-        /*
         Item {
             id: desktop
             property bool isPortrait: width < height
@@ -123,7 +93,6 @@ PageStackWindow {
                 z: 200
             }
         }
-        */
     }
 
     Component.onCompleted: {
