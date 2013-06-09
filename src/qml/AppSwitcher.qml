@@ -75,7 +75,7 @@ Item {
             }
 
             Repeater {
-                model: SwitcherModel {
+                model: WindowModel {
                     id:switcherModel
                 }
 

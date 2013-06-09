@@ -18,7 +18,7 @@ Source0:    %{name}-%{version}.tar.bz2
 Source1:    lipstick.desktop
 Source2:    lipstick.service
 Source100:  lipstick-colorful-home-qt5.yaml
-Requires:   lipstick-qt5 >= 0.12.0
+Requires:   lipstick-qt5 >= 0.12.7
 Requires:   nemo-qml-plugin-configuration-qt5
 Requires:   nemo-qml-plugin-time-qt5
 Requires:   qt-components-qt5
