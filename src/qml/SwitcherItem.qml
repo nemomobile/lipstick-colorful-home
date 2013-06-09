@@ -47,6 +47,10 @@ MouseArea {
         Behavior on opacity { NumberAnimation { duration: 300; easing.type: Easing.OutBack } }
     }
 
+    function close() {
+        Lipstick.compositor.closeClientForWindowId(model.window)
+    }
+
     onClicked: {
         if (!switcherRoot.closeMode) {
             Lipstick.compositor.windowToFront(model.window);
@@ -75,7 +79,7 @@ MouseArea {
             }
         }
         ScriptAction {
-            script: windowManager.closeWindow(model.object.window)
+            script: switcherItemRoot.close()
         }
     }
 

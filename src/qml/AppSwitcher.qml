@@ -76,6 +76,7 @@ Item {
             }
 
             Repeater {
+                id: gridRepeater
                 model: WindowModel {
                     id:switcherModel
                 }
@@ -84,9 +85,16 @@ Item {
                     width: (flickable.width - (gridview.spacing * gridview.columns)) / gridview.columns
                     height: width * (desktop.height / desktop.width)
 
+                    // The outer Item is necessary because of animations in SwitcherItem changing
+                    // its size, which would break the Grid. 
                     SwitcherItem {
+                        id: switcherItem
                         width: parent.width
                         height: parent.height
+                    }
+
+                    function close() {
+                        switcherItem.close()
                     }
                 }
             }
@@ -141,8 +149,8 @@ Item {
             text: 'Close all'
             onClicked: {
                 // TODO: use close animation inside item
-                for (var i=switcherModel.itemCount-1; i>=0; i--) {
-                    windowManager.closeWindow(switcherModel.get(i).window);
+                for (var i = gridRepeater.count - 1; i >= 0; i--) {
+                    gridRepeater.itemAt(i).close()
                 }
             }
         }
