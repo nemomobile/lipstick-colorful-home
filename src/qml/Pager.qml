@@ -24,7 +24,7 @@
 import QtQuick 1.2
 
 PathView {
-    id: view
+    id: pager
     highlightRangeMode: PathView.StrictlyEnforceRange
     preferredHighlightBegin: 0.5
     preferredHighlightEnd: 0.5

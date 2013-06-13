@@ -35,6 +35,7 @@ GridView {
     cellHeight: cellWidth + 30
     width: Math.floor(parent.width / cellWidth) * cellWidth
     cacheBuffer: gridview.contentHeight
+    property Item reorderItem
 
     // just for margin purposes
     header: Item {
@@ -45,7 +46,7 @@ GridView {
         height: 20
     }
 
-    model: LauncherModel { }
+    model: LauncherModel { id: launcherModel }
 
     delegate: LauncherItemDelegate {
         id: launcherItem
@@ -53,6 +54,5 @@ GridView {
         height: gridview.cellHeight
         source: model.object.iconId == "" ? ":/images/icons/apps.png" : (model.object.iconId.indexOf("/") == 0 ? "file://" : "image://theme/") + model.object.iconId
         iconCaption: model.object.title
-        onClicked: model.object.launchApplication();
     }
 }
