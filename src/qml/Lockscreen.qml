@@ -16,6 +16,15 @@ Image {
      **/
     property real openingState: y / -height
     visible: openingState < 1
+    onHeightChanged: {
+        if (mouseArea.fingerDown)
+            return // we'll fix this up on touch release via the animations
+
+        if (snapOpenAnimation.running)
+            snapOpenAnimation.to = -height
+        else if (!snapClosedAnimation.running && !LipstickSettings.lockscreenVisible)
+            y = -height
+    }
 
     function snapPosition() {
         if (LipstickSettings.lockscreenVisible) {
@@ -76,7 +85,7 @@ Image {
             parent.y = parent.y - delta
         }
 
-        onReleased: {
+        function snapBack() {
             fingerDown = false
             if (!LipstickSettings.lockscreenVisible || Math.abs(parent.y) > parent.height / 3) {
                 LipstickSettings.lockscreenVisible = false
@@ -86,6 +95,9 @@ Image {
 
             lockScreen.snapPosition()
         }
+
+        onCanceled: snapBack()
+        onReleased: snapBack()
     }
 
     LockscreenClock {
