@@ -76,18 +76,14 @@ Item {
             }
 
             Repeater {
+                id: repeater
                 model: SwitcherModel {
                     id:switcherModel
                 }
 
-                delegate: Item {
+                delegate: SwitcherItem {
                     width: (flickable.width - (gridview.spacing * gridview.columns)) / gridview.columns
                     height: width * (desktop.height / desktop.width)
-
-                    SwitcherItem {
-                        width: parent.width
-                        height: parent.height
-                    }
                 }
             }
         }
@@ -140,10 +136,8 @@ Item {
             }
             text: 'Close all'
             onClicked: {
-                // TODO: use close animation inside item
-                for (var i=switcherModel.itemCount-1; i>=0; i--) {
-                    windowManager.closeWindow(switcherModel.get(i).window);
-                }
+                for (var i = repeater.count - 1; i >= 0; i--)
+                    repeater.itemAt(i).close()
             }
         }
     }
