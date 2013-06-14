@@ -76,6 +76,10 @@ MouseArea {
         }
     }
 
+    function close() {
+        closeAnimation.start()
+    }
+
     CloseButton {
         id: closeButton
         Behavior on scale { PropertyAnimation { duration: 300; easing.type: Easing.OutBack } }
@@ -88,6 +92,6 @@ MouseArea {
             topMargin: -10
             rightMargin: -10
         }
-        onClicked: closeAnimation.start()
+        onClicked: switcherItemRoot.close()
     }
 }
