@@ -21,6 +21,7 @@ Source100:  lipstick-colorful-home.yaml
 Requires:   lipstick >= 0.6.1
 Requires:   nemo-qml-plugin-configuration
 Requires:   nemo-qml-plugin-time
+Requires:   nemo-qml-plugin-contextkit
 Requires:   qt-components
 BuildRequires:  pkgconfig(QtCore)
 BuildRequires:  pkgconfig(QtDeclarative)
