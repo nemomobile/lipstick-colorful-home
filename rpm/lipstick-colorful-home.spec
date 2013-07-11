@@ -64,6 +64,8 @@ cp -a %{SOURCE1} %{buildroot}%{_libdir}/systemd/user/
 
 
 # >> install post
+mkdir -p %{buildroot}%{_libdir}/systemd/user/user-session.target.wants/
+ln -s ../lipstick.service %{buildroot}%{_libdir}/systemd/user/user-session.target.wants/lipstick.service
 # << install post
 
 %files
@@ -71,5 +73,6 @@ cp -a %{SOURCE1} %{buildroot}%{_libdir}/systemd/user/
 %{_bindir}/lipstick
 %{_libdir}/systemd/user/lipstick.service
 %{_datadir}/lipstick/lipstick.conf
+%{_libdir}/systemd/user/user-session.target.wants/lipstick.service
 # >> files
 # << files
