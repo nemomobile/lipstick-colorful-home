@@ -15,8 +15,7 @@ Group:      System/GUI/Other
 License:    BSD
 URL:        https://github.com/nemomobile/lipstick-colorful-home
 Source0:    %{name}-%{version}.tar.bz2
-Source1:    lipstick.desktop
-Source2:    lipstick.service
+Source1:    lipstick.service
 Source100:  lipstick-colorful-home.yaml
 Requires:   lipstick >= 0.6.1
 Requires:   nemo-qml-plugin-configuration
@@ -61,18 +60,16 @@ rm -rf %{buildroot}
 # << install pre
 %qmake_install
 mkdir -p %{buildroot}%{_libdir}/systemd/user/
-cp -a %{SOURCE2} %{buildroot}%{_libdir}/systemd/user/
+cp -a %{SOURCE1} %{buildroot}%{_libdir}/systemd/user/
 
 
 # >> install post
-install -D -m 644 %{SOURCE1} %{buildroot}/etc/xdg/autostart/lipstick.desktop
 # << install post
 
 %files
 %defattr(-,root,root,-)
 %{_bindir}/lipstick
 %{_libdir}/systemd/user/lipstick.service
-%config /etc/xdg/autostart/*.desktop
 %{_datadir}/lipstick/lipstick.conf
 # >> files
 # << files
