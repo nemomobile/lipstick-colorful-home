@@ -1,10 +1,13 @@
 [Unit]
 Description=The lipstick UI
-After=xorg.target
-Requires=dbus.socket xorg.target mcompositor.service mthemedaemon.service meegotouch-systemui.service
-
+Requires=dbus.socket pre-user-session.target
+After=pre-user-session.target
+ 
 [Service]
 Type=notify
-ExecStart=/usr/bin/lipstick --systemd
+EnvironmentFile=-/var/lib/environment/compositor/*.conf
+ExecStart=/usr/bin/lipstick $LIPSTICK_OPTIONS --systemd
 Restart=always
-
+ 
+[Install]
+WantedBy=user-session.target
