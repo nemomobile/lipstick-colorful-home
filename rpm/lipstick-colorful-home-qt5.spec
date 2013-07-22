@@ -60,6 +60,8 @@ cp -a %{SOURCE2} %{buildroot}%{_libdir}/systemd/user/
 
 # >> install post
 install -D -m 644 %{SOURCE1} %{buildroot}/etc/xdg/autostart/lipstick.desktop
+mkdir -p %{buildroot}%{_libdir}/systemd/user/user-session.target.wants/
+ln -s ../lipstick.service %{buildroot}%{_libdir}/systemd/user/user-session.target.wants/lipstick.service
 # << install post
 
 %files
@@ -68,5 +70,6 @@ install -D -m 644 %{SOURCE1} %{buildroot}/etc/xdg/autostart/lipstick.desktop
 %{_libdir}/systemd/user/lipstick.service
 %config /etc/xdg/autostart/*.desktop
 %{_datadir}/lipstick/lipstick.conf
+%{_libdir}/systemd/user/user-session.target.wants/lipstick.service
 # >> files
 # << files
