@@ -9,7 +9,7 @@ Name:       lipstick-colorful-home-qt5
 # << macros
 
 Summary:    A nice homescreen
-Version:    0.0.0
+Version:    0.5.4
 Release:    1
 Group:      System/GUI/Other
 License:    BSD

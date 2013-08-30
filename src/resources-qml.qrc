@@ -18,5 +18,6 @@
         <file>qml/compositor.qml</file>
         <file>qml/compositor/ScreenGestureArea.qml</file>
         <file>qml/compositor/WindowWrapperBase.qml</file>
+        <file>qml/compositor/WindowWrapperAlpha.qml</file>
     </qresource>
 </RCC>
