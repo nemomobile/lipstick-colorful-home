@@ -192,6 +192,7 @@ Compositor {
 
         var isHomeWindow = window.isInProcess && root.homeWindow == null && window.title == "Home"
         var isNotificationWindow = window.category == "notification"
+        var isOverlayWindow = window.category == "overlay"
 
         var parent = null
         if (isHomeWindow) {
@@ -209,6 +210,7 @@ Compositor {
             root.homeWindow = w
             setCurrentWindow(homeWindow)
         } else if (isNotificationWindow) {
+        } else if (isOverlayWindow) {
         } else {
             setCurrentWindow(w)
         }
