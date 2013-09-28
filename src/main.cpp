@@ -22,12 +22,14 @@
 // Copyright (c) 2012, Timur Kristóf <venemo@fedoraproject.org>
 
 #include <homeapplication.h>
+#include <QFont>
 #include <homewindow.h>
 
 int main(int argc, char **argv)
 {
     HomeApplication app(argc, argv, QString());
 
+    QGuiApplication::setFont(QFont("Open Sans"));
     setenv("EGL_PLATFORM", "wayland", 1);
     setenv("QT_QPA_PLATFORM", "wayland", 1);
     setenv("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1", 1);
