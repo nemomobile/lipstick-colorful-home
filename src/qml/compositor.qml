@@ -68,19 +68,6 @@ Compositor {
         }
     }
 
-    Connections {
-        target: root
-        onActiveFocusItemChanged: {
-            // Search for the layer of the focus item
-            var focusedLayer = root.activeFocusItem
-            while (focusedLayer && focusedLayer.parent !== layersParent)
-                focusedLayer = focusedLayer.parent
-
-            // reparent the overlay to the found layer
-            overlayLayer.parent = focusedLayer ? focusedLayer : overlayLayer.parent
-        }
-    }
-
     Rectangle {
         id: layersParent
         anchors.fill: parent
@@ -109,8 +96,15 @@ Compositor {
         }
 
         Item {
-            id: notificationLayer
+            id: lockScreenLayer
             z: 6
+            width: parent.width
+            height: parent.height
+        }
+
+        Item {
+            id: notificationLayer
+            z: 7
         }
     }
 
@@ -219,6 +213,7 @@ Compositor {
         var isHomeWindow = window.isInProcess && root.homeWindow == null && window.title == "Home"
         var isNotificationWindow = window.category == "notification"
         var isOverlayWindow =  window.category == "overlay"
+        var isLockScreen = window.category == "lockscreen"
 
         var parent = null
         if (isHomeWindow) {
@@ -227,6 +222,8 @@ Compositor {
             parent = notificationLayer
         } else if (isOverlayWindow){
             parent = overlayLayer
+        } else if (isLockScreen) {
+            parent = lockScreenLayer
         } else {
             parent = appLayer
         }
@@ -240,8 +237,7 @@ Compositor {
         if (isHomeWindow) {
             root.homeWindow = w
             setCurrentWindow(homeWindow)
-        } else if (isNotificationWindow || isOverlayWindow) {
-        } else {
+        } else if (!isNotificationWindow && !isOverlayWindow && !isLockScreen) {
             setCurrentWindow(w)
         }
     }

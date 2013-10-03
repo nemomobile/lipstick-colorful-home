@@ -84,26 +84,26 @@ PageStackWindow {
                 // Initial view should be the AppLauncher
                 currentIndex: 1
             }
-            Lockscreen {
-                id: lockScreen
+        }
+    }
 
-                width: parent.width
-                height: parent.height
 
-                z: 200
+    Lockscreen {
+        id: lockScreen
 
-                onOpeningStateChanged: {
-                    // When fully closed, reset the current page
-                    if (openingState !== 0)
-                        return
+        width: parent.width
+        height: parent.height
 
-                    // Focus the switcher if any applications are running, otherwise the launcher
-                    if (switcher.runningAppsCount > 0) {
-                        pager.currentIndex = 2
-                    } else {
-                        pager.currentIndex = 1
-                    }
-                }
+        onOpeningStateChanged: {
+            // When fully closed, reset the current page
+            if (openingState !== 0)
+                return
+
+            // Focus the switcher if any applications are running, otherwise the launcher
+            if (switcher.runningAppsCount > 0) {
+                pager.currentIndex = 2
+            } else {
+                pager.currentIndex = 1
             }
         }
     }
