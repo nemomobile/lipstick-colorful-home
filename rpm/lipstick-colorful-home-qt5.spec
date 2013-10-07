@@ -25,8 +25,7 @@ Requires:   qt-components-qt5 >= 2.0.2
 Requires:   qt5-qtdeclarative-import-window2
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(lipstick-qt5) >= 0.12.0
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(lipstick-qt5) >= 0.17.0
 Conflicts:   lipstick-example-home
 
 %description

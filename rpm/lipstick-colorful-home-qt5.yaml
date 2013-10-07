@@ -11,7 +11,7 @@ Sources:
 Description: A homescreen for Nemo Mobile
 Builder: qmake5
 Requires:
-    - lipstick-qt5 >= 0.12.7
+    - lipstick-qt5 >= 0.17.0
     - nemo-qml-plugin-configuration-qt5
     - nemo-qml-plugin-time-qt5
     - qt-components-qt5 >= 2.0.2
@@ -20,7 +20,6 @@ PkgConfigBR:
     - Qt5Core
     - Qt5Quick
     - lipstick-qt5 >= 0.12.0
-    - systemd
 ExtraSources:
   - lipstick.service;%{_libdir}/systemd/user/
 Conflicts:

@@ -22,27 +22,19 @@
 // Copyright (c) 2012, Timur Kristóf <venemo@fedoraproject.org>
 
 #include <homeapplication.h>
-#include <QDebug>
-#include <QStringList>
-
-#include <systemd/sd-daemon.h>
 #include <homewindow.h>
 
 int main(int argc, char **argv)
 {
     HomeApplication app(argc, argv, QString());
 
-    app.setCompositorPath("qrc:/qml/compositor.qml");
-
     setenv("EGL_PLATFORM", "wayland", 1);
     setenv("QT_QPA_PLATFORM", "wayland", 1);
     setenv("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1", 1);
 
-    // Let systemd know that we are initialized
-    if (app.arguments().indexOf("--systemd") >= 0)
-        sd_notify(0, "READY=1");
-
+    app.setCompositorPath("qrc:/qml/compositor.qml");
     app.setQmlPath("qrc:/qml/MainScreen.qml");
+    app.mainWindowInstance()->showFullScreen();
 
     return app.exec();
 }
