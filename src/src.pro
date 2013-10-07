@@ -20,7 +20,7 @@ RESOURCES += \
     resources-qml.qrc \
     resources-images.qrc
 
-PKGCONFIG += lipstick-qt5 libsystemd-daemon
+PKGCONFIG += lipstick-qt5
 
 OTHER_FILES += qml/*.qml
 
