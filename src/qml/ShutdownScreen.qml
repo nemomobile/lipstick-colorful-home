@@ -13,7 +13,7 @@ Item {
         objectName: "shutdownBackground"
         width: shutdownWindow.width
         height: shutdownWindow.height
-        color: "white"
+        color: "black"
         opacity: shouldBeVisible ? 1 : 0
 
         Image {
