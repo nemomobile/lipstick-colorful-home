@@ -2,23 +2,17 @@ import QtQuick 2.0
 import org.nemomobile.lipstick 0.1
 //import org.freedesktop.contextkit 1.0
 import com.nokia.meego 2.0
+import QtQuick.Window 2.1
 
 Item {
-    property bool isPortrait: (orientationAngleContextProperty.value == 90 || orientationAngleContextProperty.value == 270)
+    property bool isPortrait: (orientationAngle == 90 || orientationAngle == 270)
     id: usbWindow
     width: initialSize.width
     height: initialSize.height
 
-/*
- TODO
-    ContextProperty {
-        id: orientationAngleContextProperty
-        key: "/Screen/CurrentWindow/OrientationAngle"
-    }
-*/
-    QtObject {
-        id: orientationAngleContextProperty
-        property int value: 0
+    property int orientationAngle : Screen.angleBetween(Screen.primaryOrientation,Screen.orientation)
+    onOrientationAngleChanged: {
+        console.debug("Changed to Value: "+orientationAngle)
     }
 
     Item {
@@ -27,25 +21,37 @@ Item {
         width: usbWindow.isPortrait ? usbWindow.height : usbWindow.width
         height: usbWindow.isPortrait ? usbWindow.width : usbWindow.height
         transform: Rotation {
-            origin.x: { switch(orientationAngleContextProperty.value) {
-                      case 270:
-                          return usbWindow.height / 2
+            origin.x: { switch(orientationAngle) {
                       case 180:
-                      case 90:
+                      case 270:
                           return usbWindow.width / 2
+                      case 90:
+                          return usbWindow.height / 2
                       default:
                           return 0
                       } }
-            origin.y: { switch(orientationAngleContextProperty.value) {
+            origin.y: { switch(orientationAngle) {
                 case 270:
-                case 180:
-                    return usbWindow.height / 2
-                case 90:
                     return usbWindow.width / 2
+                case 180:
+                case 90:
+                    return usbWindow.height / 2
                 default:
                     return 0
                 } }
-            angle: (orientationAngleContextProperty.value === undefined || orientationAngleContextProperty.value == 0) ? 0 : -360 + orientationAngleContextProperty.value
+            angle: {
+                switch (orientationAngle) {
+                    case undefined:
+                    case 0:
+                        return 0;
+                    case 180:
+                        return -180;
+                    case 90:
+                        return -90;
+                    case 270:
+                        return 90;
+                }
+            }
         }
         opacity: shouldBeVisible ? 1 : 0
 

@@ -25,6 +25,7 @@
 import QtQuick 2.0
 //import org.freedesktop.contextkit 1.0
 import org.nemomobile.lipstick 0.1
+import QtQuick.Window 2.1
 
 Item {
     id: notificationWindow
@@ -34,22 +35,14 @@ Item {
     width: initialSize.width
     height: initialSize.height
 
-/*
- TODO
-    ContextProperty {
-        id: orientationAngleContextProperty
-        key: "/Screen/CurrentWindow/OrientationAngle"
-    }
-*/
-
-    QtObject {
-        id: orientationAngleContextProperty
-        property int value: 0
+    property int orientationAngle : Screen.angleBetween(Screen.primaryOrientation,Screen.orientation)
+    onOrientationAngleChanged: {
+        console.debug("Changed to Value: "+orientationAngle)
     }
 
     MouseArea {
         id: notificationArea
-        property bool isPortrait: (orientationAngleContextProperty.value == 90 || orientationAngleContextProperty.value == 270)
+        property bool isPortrait: (orientationAngle == 90 || orientationAngle == 270)
         property int notificationHeight: 102
         property int notificationMargin: 14
         property int notificationIconSize: 60
@@ -58,25 +51,37 @@ Item {
         width: isPortrait ? notificationWindow.height : notificationWindow.width
         height: notificationArea.notificationHeight
         transform: Rotation {
-            origin.x: { switch(orientationAngleContextProperty.value) {
-                      case 270:
-                          return notificationWindow.height / 2
+            origin.x: { switch(orientationAngle) {
                       case 180:
-                      case 90:
+                      case 270:
                           return notificationWindow.width / 2
+                      case 90:
+                          return notificationWindow.height / 2
                       default:
                           return 0
                       } }
-            origin.y: { switch(orientationAngleContextProperty.value) {
+            origin.y: { switch(orientationAngle) {
                 case 270:
-                case 180:
-                    return notificationWindow.height / 2
-                case 90:
                     return notificationWindow.width / 2
+                case 180:
+                case 90:
+                    return notificationWindow.height / 2
                 default:
                     return 0
                 } }
-            angle: (orientationAngleContextProperty.value === undefined || orientationAngleContextProperty.value == 0) ? 0 : -360 + orientationAngleContextProperty.value
+            angle: {
+                switch (orientationAngle) {
+                    case undefined:
+                    case 0:
+                        return 0;
+                    case 180:
+                        return -180;
+                    case 90:
+                        return -90;
+                    case 270:
+                        return 90;
+                }
+            }
         }
 
         onClicked: if (notificationPreviewPresenter.notification != null) notificationPreviewPresenter.notification.actionInvoked("default")

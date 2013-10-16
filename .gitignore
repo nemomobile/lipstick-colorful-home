@@ -10,3 +10,6 @@
 *.lai
 *.la
 *.a
+
+# Creator user file
+*.pro.user
