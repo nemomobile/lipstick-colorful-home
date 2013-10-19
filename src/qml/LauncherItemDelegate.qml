@@ -144,7 +144,7 @@ Item {
                 top: parent.top
                 topMargin: 8
             }
-            width: 80
+            width: 100
             height: width
             asynchronous: true
             onStatusChanged: {
@@ -171,7 +171,7 @@ Item {
             width: parent.width
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: 20
+            font.pixelSize: 18
             color: 'white'
             anchors {
                 left: parent.left
