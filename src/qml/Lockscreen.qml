@@ -1,12 +1,14 @@
 import QtQuick 2.0
 
-Image {
+Rectangle {
     id: lockScreen
-    source: "file://" + wallpaperSource.value
+    color: "black"
+    anchors.fill: parent
 
-    Rectangle {
-        color: "red"
-        anchors.fill: parent
+    Image {
+        source: "file://" + wallpaperSource.value    
+    
+        }
     }
 
     /**
