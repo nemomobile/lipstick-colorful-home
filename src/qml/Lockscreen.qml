@@ -3,8 +3,7 @@ import QtQuick 2.0
 Rectangle {
     id: lockScreen
     color: "black"
-    anchors.fill: parent
-
+    
     Image {
         source: "file://" + wallpaperSource.value    
     
