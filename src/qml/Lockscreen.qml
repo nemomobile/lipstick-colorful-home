@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Image {
     id: lockScreen
-    source: "file:///usr/share/themes/glacier/meegotouch/icons/wallpaper-portrait.png"
+    source: wallpaperSource.value
     
         
     /**
