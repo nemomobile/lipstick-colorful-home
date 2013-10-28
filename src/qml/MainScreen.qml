@@ -44,8 +44,7 @@ PageStackWindow {
     // This is used in the lock screen
     ConfigurationValue {
         id: wallpaperSource
-        key: desktop.isPortrait ? "/desktop/meego/background/portrait/picture_filename" : "/desktop/meego/background/landscape/picture_filename"
-        defaultValue: "images/graphics-wallpaper-home.jpg"
+        key:  "/desktop/meego/background/portrait/picture_filename"
     }
 
     initialPage: Page {
