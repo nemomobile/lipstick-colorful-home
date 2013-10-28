@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Image {
     id: lockScreen
-    source: "file://" + wallpaperSource.value    
+    source: 'image://theme/wallpaper-landscape'
     
         
     /**
