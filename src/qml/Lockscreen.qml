@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Image {
     id: lockScreen
-    source: wallpaperSource.value
+    source: "file://"+wallpaperSource.value
     
         
     /**
