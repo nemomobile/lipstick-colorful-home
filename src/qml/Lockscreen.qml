@@ -1,15 +1,10 @@
 import QtQuick 2.0
 
-Rectangle {
+Image {
     id: lockScreen
-    color: "black"
+    source: "file://" + wallpaperSource.value    
     
-    Image {
-        source: "file://" + wallpaperSource.value    
-    
-        }
-    
-
+        
     /**
      * openingState should be a value between 0 and 1, where 0 means
      * the lockscreen is "down" (obscures the view) and 1 means the
