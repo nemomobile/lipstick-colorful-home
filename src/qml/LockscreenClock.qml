@@ -3,13 +3,10 @@ import QtQuick 2.0
 
 Rectangle {
     id: lockscreenClock
-    property int spacing: 35
-
-    height: timeDisplay.height + dateDisplay.height + 3.9 * spacing
+    height: (timeDisplay.height + dateDisplay.height) * 1.5
 
     gradient: Gradient {
-        GradientStop { position: 0.0; color: '#dd000000' }
-        GradientStop { position: 0.5; color: '#aa000000' }
+        GradientStop { position: 0.0; color: '#b0000000' }
         GradientStop { position: 1.0; color: '#00000000' }
     }
 
@@ -17,7 +14,6 @@ Rectangle {
         id: clockColumn
 
         anchors {
-            margins: parent.spacing
             left: parent.left
             right: parent.right
             top: parent.top
@@ -26,16 +22,15 @@ Rectangle {
         Text {
             id: timeDisplay
 
-            font.pixelSize: 120
+            font.pixelSize: 80
+            font.weight: Font.Light
+            lineHeight: 0.85
             color: "white"
-            style: Text.Outline
-            styleColor: "black"
-            horizontalAlignment: Text.AlignRight
+            horizontalAlignment: Text.AlignHCenter
 
             anchors {
                 left: parent.left
                 right: parent.right
-                rightMargin: -5
             }
 
             text: Qt.formatDateTime(wallClock.time, "hh:mm")
@@ -44,18 +39,17 @@ Rectangle {
         Text {
             id: dateDisplay
 
-            font.pixelSize: 30
+            font.pixelSize: 20
             color: "white"
-            style: Text.Outline
-            styleColor: "black"
-            horizontalAlignment: Text.AlignRight
+            opacity: 0.8
+            horizontalAlignment: Text.AlignHCenter
 
             anchors {
                 left: parent.left
                 right: parent.right
             }
 
-            text: Qt.formatDateTime(wallClock.time, "dd/MM/yyyy")
+            text: Qt.formatDateTime(wallClock.time, "<b>dddd</b>, d MMMM yyyy")
         }
     }
 }
