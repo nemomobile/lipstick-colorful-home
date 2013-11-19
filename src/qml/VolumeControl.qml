@@ -2,27 +2,20 @@ import QtQuick 2.0
 import org.nemomobile.lipstick 0.1
 //import org.freedesktop.contextkit 1.0
 import com.nokia.meego 2.0
+import QtQuick.Window 2.1
 
 Item {
     id: volumeWindow
 
-    property bool isPortrait: (orientationAngleContextProperty.value == 90 || orientationAngleContextProperty.value == 270)
+    property bool isPortrait: (orientationAngle == 90 || orientationAngle == 270)
 
     width: initialSize.width
     height: initialSize.height
 
-/*
- TODO
-    ContextProperty {
-        id: orientationAngleContextProperty
-        key: "/Screen/CurrentWindow/OrientationAngle"
+    property int orientationAngle : Screen.angleBetween(Screen.primaryOrientation,Screen.orientation)
+    onOrientationAngleChanged: {
+        console.debug("Changed to Value: "+orientationAngle)
     }
-*/
-    QtObject {
-        id: orientationAngleContextProperty
-        property int value: 0
-    }
-
 
     Item {
         anchors.centerIn: parent
