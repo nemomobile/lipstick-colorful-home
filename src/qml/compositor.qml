@@ -40,6 +40,7 @@ Compositor {
 
     // The application window that was most recently topmost
     property Item topmostApplicationWindow
+    screenOrientation: sensorOrientation
 
     function windowToFront(winId) {
         var o = root.windowForId(winId)
